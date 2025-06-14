@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
             <Link to="/doctor">
-              <Button variant="ghost" className="text-foreground hover:text-deep-teal dark:hover:text-primary">
+              <Button variant="ghost" className="text-foreground hover:text-deep-teal dark:hover:text-primary hover:bg-muted/50 transition-all duration-200">
                 Doctor Portal
               </Button>
             </Link>
@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
             
             <div className="border-t border-border pt-4 mt-4 space-y-2">
               <Link to="/doctor" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary">
+                <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary hover:bg-muted/50">
                   Doctor Portal
                 </Button>
               </Link>
