@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Menu, X, Stethoscope, Crown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ThemeToggle from './ThemeToggle';
@@ -15,9 +15,16 @@ const navLinks = [
 
 const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setMobileMenuOpen(false);
   };
 
   const activeLinkClass = "text-deep-teal dark:text-primary font-semibold relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-deep-teal dark:after:bg-primary after:bottom-[-4px] after:left-0";
@@ -28,7 +35,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 text-deep-teal dark:text-primary hover:opacity-80 transition-opacity duration-200">
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center space-x-3 text-deep-teal dark:text-primary hover:opacity-80 transition-opacity duration-200">
             <div className="relative">
               <Stethoscope size={36} strokeWidth={1.8} />
               <Crown size={16} className="absolute -top-1 -right-1 text-yellow-500" />
@@ -42,33 +49,33 @@ const Navbar: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-2 lg:space-x-4">
             {navLinks.map((link) => (
-              <NavLink
+              <button
                 key={link.title}
-                to={link.path}
-                className={({ isActive }) =>
-                  `${isActive ? activeLinkClass : inactiveLinkClass} px-3 py-2 rounded-md text-sm font-medium leading-body`
-                }
+                onClick={() => handleNavigation(link.path)}
+                className={`px-3 py-2 rounded-md text-sm font-medium leading-body transition-colors duration-200 ease-in-out ${
+                  window.location.pathname === link.path ? activeLinkClass : inactiveLinkClass
+                }`}
                 aria-label={link.title}
               >
                 {link.title}
-              </NavLink>
+              </button>
             ))}
           </nav>
 
           {/* Right side buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
-            <Link to="/doctor">
+            <button onClick={() => handleNavigation('/doctor')}>
               <Button variant="ghost" className="text-foreground hover:text-deep-teal dark:hover:text-primary hover:bg-muted/50 transition-all duration-200">
                 Doctor Portal
               </Button>
-            </Link>
-            <Link to="/patient-intake">
+            </button>
+            <button onClick={() => handleNavigation('/patient-intake')}>
               <Button className="bg-gradient-to-r from-deep-teal to-blue-600 hover:from-deep-teal/90 hover:to-blue-600/90 text-white px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
                 <Crown className="w-4 h-4 mr-2" />
                 Book Premium
               </Button>
-            </Link>
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -93,31 +100,32 @@ const Navbar: React.FC = () => {
         <div className="md:hidden absolute top-24 left-0 right-0 bg-background/95 backdrop-blur-lg shadow-xl z-40 rounded-b-2xl mx-2 border border-border/60">
           <div className="px-4 pt-3 pb-4 space-y-2 sm:px-5">
             {navLinks.map((link) => (
-              <NavLink
+              <button
                 key={link.title}
-                to={link.path}
-                onClick={() => setMobileMenuOpen(false)}
-                className={({ isActive }) =>
-                  `${isActive ? 'bg-primary/10 text-primary font-semibold' : 'text-foreground hover:text-primary hover:bg-muted/70'} block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ease-in-out leading-body`
-                }
+                onClick={() => handleNavigation(link.path)}
+                className={`${
+                  window.location.pathname === link.path 
+                    ? 'bg-primary/10 text-primary font-semibold' 
+                    : 'text-foreground hover:text-primary hover:bg-muted/70'
+                } block w-full text-left px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ease-in-out leading-body`}
                 aria-label={link.title}
               >
                 {link.title}
-              </NavLink>
+              </button>
             ))}
             
             <div className="border-t border-border pt-4 mt-4 space-y-2">
-              <Link to="/doctor" onClick={() => setMobileMenuOpen(false)}>
+              <button onClick={() => handleNavigation('/doctor')} className="w-full">
                 <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary hover:bg-muted/50">
                   Doctor Portal
                 </Button>
-              </Link>
-              <Link to="/patient-intake" onClick={() => setMobileMenuOpen(false)}>
+              </button>
+              <button onClick={() => handleNavigation('/patient-intake')} className="w-full">
                 <Button className="w-full bg-gradient-to-r from-deep-teal to-blue-600 hover:from-deep-teal/90 hover:to-blue-600/90 text-white rounded-xl shadow-lg">
                   <Crown className="w-4 h-4 mr-2" />
                   Book Premium
                 </Button>
-              </Link>
+              </button>
             </div>
           </div>
         </div>

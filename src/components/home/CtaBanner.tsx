@@ -44,13 +44,15 @@ const CtaBanner: React.FC = () => {
               </Button>
             </Link>
             
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-sm text-lg px-10 py-6 rounded-xl transition-all duration-300"
-            >
-              Schedule a Demo
-            </Button>
+            <Link to="/contact">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-2 border-white text-white bg-white/10 hover:bg-white hover:text-deep-teal backdrop-blur-sm text-lg px-10 py-6 rounded-xl transition-all duration-300 font-semibold"
+              >
+                Contact Our Team
+              </Button>
+            </Link>
           </div>
           
           {/* Trust indicators */}
