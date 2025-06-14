@@ -22,26 +22,20 @@ import {
   Users, 
   Clock, 
   Star,
-  TrendingUp,
   Eye,
-  Bone,
-  Wind,
-  Baby,
   Sparkles,
   Award,
   BookOpen,
   Video,
   Headphones,
   Download,
-  Share2,
-  Filter,
   Tag
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { allHealthArticles, getArticlesByCategory } from '@/data/healthArticles';
+import { allHealthArticles } from '@/data/healthArticles';
 
 const healthCategories = [
-  { name: 'All Topics', count: 156, icon: BookText, color: 'bg-blue-500' },
+  { name: 'All Topics', count: allHealthArticles.length, icon: BookText, color: 'bg-blue-500' },
   { name: 'Heart Health', count: 28, icon: Heart, color: 'bg-red-500' },
   { name: 'Mental Wellness', count: 34, icon: Brain, color: 'bg-purple-500' },
   { name: 'Fitness & Exercise', count: 22, icon: Activity, color: 'bg-green-500' },
@@ -85,7 +79,7 @@ const healthTips = [
 ];
 
 const healthStats = [
-  { number: "150+", label: "Health Articles", icon: BookOpen },
+  { number: `${allHealthArticles.length}+`, label: "Health Articles", icon: BookOpen },
   { number: "50K+", label: "Monthly Readers", icon: Users },
   { number: "25+", label: "Medical Experts", icon: Stethoscope },
   { number: "4.8/5", label: "Average Rating", icon: Star }
@@ -96,8 +90,10 @@ const HealthHubPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState('All Topics');
   const [activeTab, setActiveTab] = useState('articles');
 
+  // Filter articles based on search term and category
   const filteredArticles = allHealthArticles.filter(article => {
-    const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    const matchesSearch = searchTerm === '' || 
+                         article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          article.author.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'All Topics' || article.category === selectedCategory;
@@ -131,7 +127,7 @@ const HealthHubPage: React.FC = () => {
               
               <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8 max-w-4xl mx-auto">
                 Your ultimate destination for evidence-based health information, expert advice, and practical wellness guidance. 
-                From prevention to treatment, we've got your health journey covered.
+                From prevention to treatment, we have got your health journey covered.
               </p>
               
               {/* Search Bar */}
@@ -221,9 +217,9 @@ const HealthHubPage: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Featured Articles */}
+                {/* Articles Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                  {filteredArticles.map((article) => (
+                  {filteredArticles.slice(0, 12).map((article) => (
                     <Card key={article.id} className="shadow-xl rounded-3xl flex flex-col overflow-hidden group transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border-0 bg-white/90 backdrop-blur-sm">
                       {article.featured && (
                         <div className="absolute top-6 left-6 z-10">
@@ -258,7 +254,7 @@ const HealthHubPage: React.FC = () => {
                         </CardTitle>
                         
                         <div className="flex flex-wrap gap-2 mb-4">
-                          {article.tags.map((tag, index) => (
+                          {article.tags.slice(0, 3).map((tag, index) => (
                             <Badge key={index} variant="outline" className="text-xs text-gray-600 border-gray-300">
                               {tag}
                             </Badge>
@@ -307,6 +303,16 @@ const HealthHubPage: React.FC = () => {
                     </Card>
                   ))}
                 </div>
+
+                {/* Show More Button */}
+                {filteredArticles.length > 12 && (
+                  <div className="text-center">
+                    <p className="text-gray-600 mb-4">Showing 12 of {filteredArticles.length} articles</p>
+                    <Button variant="outline" size="lg" className="border-deep-teal text-deep-teal hover:bg-deep-teal hover:text-white">
+                      View All Articles
+                    </Button>
+                  </div>
+                )}
               </TabsContent>
 
               {/* Categories Tab */}
@@ -378,7 +384,6 @@ const HealthHubPage: React.FC = () => {
                 </div>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {/* Downloadable Guides */}
                   <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm rounded-2xl hover:-translate-y-1">
                     <CardHeader className="p-8">
                       <div className="w-16 h-16 bg-blue-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -394,7 +399,6 @@ const HealthHubPage: React.FC = () => {
                     </CardContent>
                   </Card>
 
-                  {/* Video Library */}
                   <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm rounded-2xl hover:-translate-y-1">
                     <CardHeader className="p-8">
                       <div className="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -410,7 +414,6 @@ const HealthHubPage: React.FC = () => {
                     </CardContent>
                   </Card>
 
-                  {/* Podcasts */}
                   <Card className="group hover:shadow-xl transition-all duration-300 border-0 bg-white/90 backdrop-blur-sm rounded-2xl hover:-translate-y-1">
                     <CardHeader className="p-8">
                       <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
