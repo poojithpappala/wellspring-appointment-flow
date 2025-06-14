@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import AnimatedSection from '@/components/global/AnimatedSection';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
@@ -25,7 +24,7 @@ import {
   TrendingUp,
   Eye,
   Bone,
-  Lungs,
+  Wind,
   Baby,
   Sparkles,
   Award,
