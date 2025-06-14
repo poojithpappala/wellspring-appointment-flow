@@ -1,5 +1,4 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -50,6 +49,19 @@ const ContactPage: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [activeTab, setActiveTab] = useState('form');
+
+  // Load Tidio chat script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = '//code.tidio.co/vnxbo4jpapbfmqyvgkwspmhuz34m5mqr.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup script on unmount
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -156,6 +168,25 @@ const ContactPage: React.FC = () => {
 
   const getStepProgress = () => (currentStep / 3) * 100;
 
+  // Redirect functions
+  const handleCalendlyRedirect = () => {
+    window.open('https://calendly.com/poojith132photography/doctor-consultation-clone', '_blank');
+  };
+
+  const handleLiveChatRedirect = () => {
+    // Trigger Tidio chat widget
+    if (window.tidioChatApi) {
+      window.tidioChatApi.open();
+    } else {
+      // Fallback if Tidio is not loaded yet
+      setTimeout(() => {
+        if (window.tidioChatApi) {
+          window.tidioChatApi.open();
+        }
+      }, 1000);
+    }
+  };
+
   const contactInfo = [
     {
       icon: Mail,
@@ -176,14 +207,14 @@ const ContactPage: React.FC = () => {
       title: "Live Chat",
       content: "Available Now",
       description: "Instant support online",
-      href: null,
+      onClick: handleLiveChatRedirect,
     },
     {
       icon: Calendar,
       title: "Book Consultation",
       content: "Schedule Meeting",
       description: "30-min strategy session",
-      href: null,
+      onClick: handleCalendlyRedirect,
     },
   ];
 
@@ -244,10 +275,11 @@ const ContactPage: React.FC = () => {
           </div>
         </AnimatedSection>
 
-        <div className="grid lg:grid-cols-3 gap-12 items-start">
+        {/* Main Contact Section - Single Column Layout */}
+        <div className="max-w-5xl mx-auto">
           {/* Premium Contact Form */}
-          <AnimatedSection className="lg:col-span-2">
-            <Card className="shadow-2xl rounded-3xl border-0 bg-white/90 backdrop-blur-sm">
+          <AnimatedSection>
+            <Card className="shadow-2xl rounded-3xl border-0 bg-white/90 backdrop-blur-sm mb-12">
               <CardHeader className="p-8 pb-4">
                 <div className="flex items-center justify-between">
                   <CardTitle className="text-3xl font-display text-deep-teal flex items-center">
@@ -644,7 +676,7 @@ const ContactPage: React.FC = () => {
                     <p className="text-muted-foreground mb-6">
                       Connect with our support team instantly for immediate assistance.
                     </p>
-                    <Button className="btn-primary">
+                    <Button className="btn-primary" onClick={handleLiveChatRedirect}>
                       Start Live Chat
                       <MessageSquare size={16} className="ml-2" />
                     </Button>
@@ -656,7 +688,7 @@ const ContactPage: React.FC = () => {
                     <p className="text-muted-foreground mb-6">
                       Book a personalized consultation with our experts.
                     </p>
-                    <Button className="btn-primary">
+                    <Button className="btn-primary" onClick={handleCalendlyRedirect}>
                       Book Consultation
                       <Calendar size={16} className="ml-2" />
                     </Button>
@@ -666,84 +698,85 @@ const ContactPage: React.FC = () => {
             </Card>
           </AnimatedSection>
 
-          {/* Premium Contact Information */}
+          {/* Professional Premium Support Channels */}
           <AnimatedSection>
-            <div className="space-y-6">
-              <Card className="shadow-xl rounded-3xl border-0 bg-gradient-to-br from-deep-teal to-blue-600 text-white overflow-hidden">
-                <CardHeader className="p-8">
-                  <CardTitle className="text-2xl font-display text-white flex items-center">
-                    <Star size={24} className="mr-2" />
+            <Card className="shadow-xl rounded-3xl border-0 bg-gradient-to-br from-deep-teal to-blue-600 text-white overflow-hidden">
+              <CardHeader className="p-8">
+                <div className="text-center">
+                  <CardTitle className="text-3xl font-display text-white flex items-center justify-center mb-4">
+                    <Star size={32} className="mr-3" />
                     Premium Support Channels
                   </CardTitle>
-                  <p className="text-blue-100 mt-2">
-                    Multiple ways to reach our expert team
+                  <p className="text-blue-100 text-lg">
+                    Multiple ways to reach our expert team with priority support
                   </p>
-                </CardHeader>
-                <CardContent className="p-8 pt-0 space-y-4">
+                </div>
+              </CardHeader>
+              <CardContent className="p-8 pt-0">
+                <div className="grid md:grid-cols-2 gap-6">
                   {contactInfo.map((info, index) => (
                     <div key={index} className="group">
                       {info.href ? (
                         <a 
                           href={info.href}
-                          className="flex items-start space-x-4 p-4 rounded-2xl bg-white/10 hover:bg-white/20 transition-all duration-300 group"
+                          className="flex items-center space-x-4 p-6 rounded-2xl bg-white/10 hover:bg-white/20 transition-all duration-300 group h-full"
                         >
                           <div className="flex-shrink-0">
-                            <info.icon size={24} className="text-white group-hover:scale-110 transition-transform" />
+                            <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                              <info.icon size={24} className="text-white group-hover:scale-110 transition-transform" />
+                            </div>
                           </div>
-                          <div>
-                            <h3 className="font-semibold text-white mb-1">{info.title}</h3>
-                            <p className="text-blue-100 font-medium">{info.content}</p>
-                            <p className="text-blue-200 text-sm">{info.description}</p>
+                          <div className="flex-1">
+                            <h3 className="font-semibold text-white text-lg mb-1">{info.title}</h3>
+                            <p className="text-blue-100 font-medium text-base">{info.content}</p>
+                            <p className="text-blue-200 text-sm mt-1">{info.description}</p>
                           </div>
                         </a>
                       ) : (
-                        <div className="flex items-start space-x-4 p-4 rounded-2xl bg-white/10 cursor-pointer hover:bg-white/20 transition-all duration-300">
+                        <button 
+                          onClick={info.onClick}
+                          className="flex items-center space-x-4 p-6 rounded-2xl bg-white/10 hover:bg-white/20 transition-all duration-300 w-full text-left group h-full"
+                        >
                           <div className="flex-shrink-0">
-                            <info.icon size={24} className="text-white" />
+                            <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                              <info.icon size={24} className="text-white group-hover:scale-110 transition-transform" />
+                            </div>
                           </div>
-                          <div>
-                            <h3 className="font-semibold text-white mb-1">{info.title}</h3>
-                            <p className="text-blue-100 font-medium">{info.content}</p>
-                            <p className="text-blue-200 text-sm">{info.description}</p>
+                          <div className="flex-1">
+                            <h3 className="font-semibold text-white text-lg mb-1">{info.title}</h3>
+                            <p className="text-blue-100 font-medium text-base">{info.content}</p>
+                            <p className="text-blue-200 text-sm mt-1">{info.description}</p>
                           </div>
-                        </div>
+                        </button>
                       )}
                     </div>
                   ))}
-                </CardContent>
-              </Card>
+                </div>
 
-              {/* Premium Benefits */}
-              <Card className="shadow-lg rounded-2xl border border-gray-200">
-                <CardContent className="p-6">
-                  <div className="text-center">
-                    <Zap size={32} className="text-deep-teal mx-auto mb-3" />
-                    <h3 className="font-semibold text-charcoal mb-2">Premium Benefits</h3>
-                    <ul className="text-sm text-muted-foreground space-y-2 text-left">
-                      <li className="flex items-center space-x-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Priority response within 2 hours</span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>Dedicated account manager</span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>File upload support</span>
-                      </li>
-                      <li className="flex items-center space-x-2">
-                        <CheckCircle size={16} className="text-green-500" />
-                        <span>24/7 live chat access</span>
-                      </li>
-                    </ul>
-                    <Button variant="outline" className="w-full mt-4">
-                      Upgrade to Premium
-                    </Button>
+                {/* Premium Benefits */}
+                <div className="mt-8 pt-8 border-t border-white/20">
+                  <h3 className="text-xl font-semibold text-white mb-6 text-center">Premium Benefits Included</h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle size={20} className="text-green-300 flex-shrink-0" />
+                      <span className="text-blue-100">Priority response within 2 hours</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle size={20} className="text-green-300 flex-shrink-0" />
+                      <span className="text-blue-100">Dedicated account manager</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle size={20} className="text-green-300 flex-shrink-0" />
+                      <span className="text-blue-100">File upload support</span>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle size={20} className="text-green-300 flex-shrink-0" />
+                      <span className="text-blue-100">24/7 live chat access</span>
+                    </div>
                   </div>
-                </CardContent>
-              </Card>
-            </div>
+                </div>
+              </CardContent>
+            </Card>
           </AnimatedSection>
         </div>
 
@@ -776,5 +809,15 @@ const ContactPage: React.FC = () => {
     </div>
   );
 };
+
+// Add TypeScript declaration for Tidio
+declare global {
+  interface Window {
+    tidioChatApi?: {
+      open: () => void;
+      close: () => void;
+    };
+  }
+}
 
 export default ContactPage;
