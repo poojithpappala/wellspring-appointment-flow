@@ -128,7 +128,7 @@ const AdvancedBookingSection: React.FC = () => {
             {/* Floating stats */}
             <div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-lg p-4 border border-gray-100">
               <div className="text-center">
-                <div className="text-lg font-bold text-deep-teal">< 30s</div>
+                <div className="text-lg font-bold text-deep-teal">&lt; 30s</div>
                 <div className="text-xs text-gray-600">Avg. Booking Time</div>
               </div>
             </div>
