@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Button } from '@/components/ui/button';
 import SpecialistCard, { Specialist } from './SpecialistCard';
 
 const specialistsData: Specialist[] = [
