@@ -1,5 +1,6 @@
+
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom'; // Use NavLink for active styling
 import { Menu, X, Stethoscope } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -20,27 +21,33 @@ const Navbar: React.FC = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const activeLinkClass = "text-deep-teal font-semibold relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-deep-teal after:bottom-[-4px] after:left-0";
+  const inactiveLinkClass = "text-charcoal hover:text-deep-teal transition-colors duration-200 ease-in-out";
+
+
   return (
-    <header className="bg-background/80 backdrop-blur-md shadow-soft sticky top-0 z-50">
+    <header className="bg-background/90 backdrop-blur-lg shadow-soft sticky top-0 z-50 border-b border-border/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-24"> {/* Increased height */}
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 text-deep-teal hover:text-opacity-80 transition-colors">
-            <Stethoscope size={32} strokeWidth={2} />
-            <span className="font-bold text-xl tracking-tight">WellnessPortal</span>
+          <Link to="/" className="flex items-center space-x-2.5 text-deep-teal hover:opacity-80 transition-opacity duration-200">
+            <Stethoscope size={36} strokeWidth={1.8} /> {/* Slightly larger icon */}
+            <span className="font-display font-bold text-2xl tracking-tight">WellnessPortal</span> {/* Using display font */}
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-1 lg:space-x-2">
+          <nav className="hidden md:flex items-center space-x-2 lg:space-x-4"> {/* Increased spacing */}
             {navLinks.map((link) => (
-              <Link
+              <NavLink
                 key={link.title}
                 to={link.path}
-                className="text-charcoal hover:text-deep-teal px-3 py-2 rounded-md text-sm font-medium transition-colors leading-body"
+                className={({ isActive }) =>
+                  `${isActive ? activeLinkClass : inactiveLinkClass} px-3 py-2 rounded-md text-sm font-medium leading-body`
+                }
                 aria-label={link.title}
               >
                 {link.title}
-              </Link>
+              </NavLink>
             ))}
           </nav>
 
@@ -52,9 +59,9 @@ const Navbar: React.FC = () => {
               onClick={toggleMobileMenu}
               aria-label="Open main menu"
               aria-expanded={mobileMenuOpen}
-              className="text-charcoal hover:text-deep-teal hover:bg-gray-100"
+              className="text-charcoal hover:text-deep-teal hover:bg-gray-100/80 p-2 rounded-lg"
             >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </Button>
           </div>
         </div>
@@ -62,20 +69,22 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Panel */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-20 left-0 right-0 bg-background shadow-lg z-40 rounded-b-2xl mx-2">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="md:hidden absolute top-24 left-0 right-0 bg-background shadow-xl z-40 rounded-b-2xl mx-2 border border-border/60">
+          <div className="px-4 pt-3 pb-4 space-y-2 sm:px-5">
             {navLinks.map((link) => (
-              <Link
+              <NavLink
                 key={link.title}
                 to={link.path}
                 onClick={() => {
                   setMobileMenuOpen(false);
                 }}
-                className="block text-charcoal hover:text-deep-teal hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium transition-colors leading-body"
+                className={({ isActive }) =>
+                  `${isActive ? 'bg-deep-teal/10 text-deep-teal font-semibold' : 'text-charcoal hover:text-deep-teal hover:bg-gray-50/70'} block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ease-in-out leading-body`
+                }
                 aria-label={link.title}
               >
                 {link.title}
-              </Link>
+              </NavLink>
             ))}
           </div>
         </div>

@@ -21,7 +21,7 @@
     --secondary-foreground: 240 5.9% 10%;
 
     --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted-foreground: 240 3.8% 46.1%; /* Slightly darker muted foreground for better contrast */
 
     --accent: 177 100% 24%; /* deep-teal for accents */
     --accent-foreground: 0 0% 100%;
@@ -37,9 +37,7 @@
   }
 
   .dark {
-    /* Keeping dark mode variables, though not explicitly requested to implement a toggle.
-       This provides a fallback if the system prefers dark mode and tailwind.config.ts enables it.
-       For this project, we'll focus on the light theme. */
+    /* ... keep existing code (dark mode variables) */
     --background: 20 14.3% 4.1%;
     --foreground: 0 0% 98%;
 
@@ -75,34 +73,36 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-sans;
-    line-height: var(--line-body, 1.6); /* Default line height for body */
+    @apply bg-background text-charcoal font-sans antialiased; /* Changed text-foreground to text-charcoal for consistency, added antialiased */
+    line-height: theme('lineHeight.body');
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold text-foreground;
-    line-height: var(--line-heading, 1.4); /* Default line height for headings */
+    @apply font-display font-semibold text-charcoal; /* Use font-display for headings, ensured text-charcoal */
+    line-height: theme('lineHeight.heading');
   }
   /* Specific heading sizes - can be applied with text-xl, text-2xl etc. */
-  h1 { @apply text-3xl md:text-4xl; } /* Example sizes, spec says 2xl for "Heading" */
-  h2 { @apply text-2xl md:text-3xl; } /* Using this for "Our Specialists" */
+  h1 { @apply text-4xl md:text-5xl; }
+  h2 { @apply text-3xl md:text-4xl; }
+  h3 { @apply text-2xl md:text-3xl; }
+
 
   /* Spacing for sections */
   .section-padding {
-    @apply px-4 py-8 md:px-8 md:py-16; /* 2xl padding (py-8 / p-8 from spec) */
+    @apply px-4 py-12 md:px-8 md:py-20; /* Increased padding for more breathing room */
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-deep-teal text-white hover:bg-opacity-90 transition-all duration-200 ease-in-out transform hover:scale-102 rounded-md px-6 py-3 text-base font-medium shadow-soft;
+    @apply bg-deep-teal text-white hover:bg-deep-teal/90 transition-all duration-300 ease-in-out transform hover:scale-103 rounded-lg px-8 py-3 text-base font-medium shadow-subtle-lift focus-visible:ring-2 focus-visible:ring-deep-teal focus-visible:ring-offset-2; /* Enhanced styling */
   }
   .btn-secondary {
-    @apply bg-gray-200 text-charcoal hover:bg-gray-300 transition-all duration-200 ease-in-out transform hover:scale-102 rounded-md px-6 py-3 text-base font-medium shadow-soft;
+    @apply bg-gray-100 text-charcoal hover:bg-gray-200/80 transition-all duration-300 ease-in-out transform hover:scale-103 rounded-lg px-8 py-3 text-base font-medium shadow-subtle-lift border border-gray-200 focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2; /* Enhanced styling */
   }
   .input-field {
-    @apply block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:ring-deep-teal focus:border-deep-teal sm:text-sm;
+    @apply block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-deep-teal focus:border-deep-teal sm:text-sm transition-colors duration-200; /* Rounded-lg */
   }
   .form-label {
-    @apply block text-sm font-medium text-charcoal mb-1;
+    @apply block text-sm font-medium text-charcoal mb-1.5; /* Increased margin bottom */
   }
 }

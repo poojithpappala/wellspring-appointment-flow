@@ -1,8 +1,9 @@
+
 import React from 'react';
 import AnimatedSection from '@/components/global/AnimatedSection';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { BookText, CalendarDays, UserCircle } from 'lucide-react';
+import { BookText, CalendarDays, UserCircle, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const placeholderArticles = [
@@ -39,46 +40,46 @@ const HealthHubPage: React.FC = () => {
   return (
     <div className="container mx-auto section-padding">
       <AnimatedSection>
-        <header className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-charcoal mb-4 leading-heading">
+        <header className="text-center mb-16"> {/* Increased margin bottom */}
+          <h1 className="text-5xl md:text-6xl font-display text-charcoal mb-6 leading-tight"> {/* Use font-display, adjusted size */}
             Health Hub
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-body">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"> {/* Adjusted size and leading */}
             Your go-to resource for trusted health information, articles, and wellness tips from our experts.
           </p>
         </header>
       </AnimatedSection>
 
-      <AnimatedSection className="mb-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <AnimatedSection className="mb-16"> {/* Increased margin bottom */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"> {/* Increased gap */}
           {placeholderArticles.map((article) => (
-            <Card key={article.id} className="shadow-soft rounded-2xl flex flex-col overflow-hidden">
-              <Link to={`/health-hub/${article.id}`}>
-                <img src={article.imageUrl} alt={article.title} className="w-full h-48 object-cover"/>
+            <Card key={article.id} className="shadow-subtle-lift rounded-2xl flex flex-col overflow-hidden group transition-all duration-300 ease-in-out hover:shadow-2xl hover:scale-103">
+              <Link to={`/health-hub/${article.id}`} className="block overflow-hidden">
+                <img src={article.imageUrl} alt={article.title} className="w-full h-52 object-cover transition-transform duration-300 group-hover:scale-110"/>
               </Link>
-              <CardHeader>
-                <CardTitle className="text-xl text-deep-teal hover:text-opacity-80 transition-colors">
+              <CardHeader className="p-6">
+                <CardDescription className="text-xs text-deep-teal uppercase tracking-wider font-semibold pt-1 mb-1">{article.category}</CardDescription>
+                <CardTitle className="text-2xl font-display text-charcoal hover:text-deep-teal transition-colors duration-200 leading-tight">
                   <Link to={`/health-hub/${article.id}`}>{article.title}</Link>
                 </CardTitle>
-                <CardDescription className="text-xs text-muted-foreground pt-1">{article.category}</CardDescription>
               </CardHeader>
-              <CardContent className="flex-grow">
-                <p className="text-muted-foreground leading-body text-sm">
+              <CardContent className="p-6 pt-0 flex-grow">
+                <p className="text-muted-foreground leading-relaxed text-sm">
                   {article.excerpt}
                 </p>
               </CardContent>
-              <CardFooter className="flex flex-col sm:flex-row justify-between items-start sm:items-center text-xs text-muted-foreground border-t pt-4 mt-auto">
+              <CardFooter className="p-6 pt-2 flex flex-col sm:flex-row justify-between items-start sm:items-center text-xs text-muted-foreground border-t mt-auto">
                 <div className="flex items-center mb-2 sm:mb-0">
-                  <UserCircle size={16} className="mr-1.5" /> {article.author}
+                  <UserCircle size={16} className="mr-1.5 text-deep-teal" /> {article.author}
                 </div>
                 <div className="flex items-center">
-                  <CalendarDays size={16} className="mr-1.5" /> {article.date}
+                  <CalendarDays size={16} className="mr-1.5 text-deep-teal" /> {article.date}
                 </div>
               </CardFooter>
-              <div className="p-6 pt-0">
-                 <Button asChild variant="outline" className="w-full mt-2 border-deep-teal text-deep-teal hover:bg-deep-teal/10">
+              <div className="p-6 pt-4">
+                 <Button asChild variant="outline" className="w-full border-deep-teal text-deep-teal hover:bg-deep-teal hover:text-white transition-all duration-300 group-hover:shadow-md">
                     <Link to={`/health-hub/${article.id}`}>
-                      Read More <BookText size={16} className="ml-2" />
+                      Read More <ArrowRight size={16} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
                     </Link>
                  </Button>
               </div>
@@ -88,7 +89,7 @@ const HealthHubPage: React.FC = () => {
       </AnimatedSection>
 
       <AnimatedSection className="text-center">
-        <Button size="lg" className="btn-primary">
+        <Button size="lg" className="btn-primary px-10 py-3.5 text-base"> {/* Used btn-primary class */}
           Load More Articles
         </Button>
       </AnimatedSection>

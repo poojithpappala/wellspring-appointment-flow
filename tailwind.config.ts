@@ -60,9 +60,10 @@ export default {
 			},
 			fontFamily: {
         sans: ['Inter', 'sans-serif'],
+        display: ['Playfair Display', 'serif'], // Added Playfair Display
       },
       lineHeight: {
-        'heading': '1.4',
+        'heading': '1.3', // Slightly adjusted for Playfair Display
         'body': '1.6',
       },
 			borderRadius: {
@@ -92,10 +93,12 @@ export default {
 			},
       scale: {
         '102': '1.02',
+        '103': '1.03',
       },
       boxShadow: {
         soft: '0 4px 12px rgba(0, 0, 0, 0.08)', // Softer shadow
-        '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)', // Tailwind's default 2xl, can adjust if needed
+        '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+        'subtle-lift': '0 8px 16px rgba(0, 0, 0, 0.07), 0 3px 6px rgba(0, 0, 0, 0.05)',
       }
 		}
 	},

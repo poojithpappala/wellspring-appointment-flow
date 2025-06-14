@@ -1,4 +1,3 @@
-
 import React from 'react';
 import HeroSection from '@/components/home/HeroSection';
 import SpecialistsGrid from '@/components/home/SpecialistsGrid';

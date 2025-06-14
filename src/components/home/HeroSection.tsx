@@ -1,8 +1,8 @@
-
 import React from 'react';
 import TestimonialCarousel from './TestimonialCarousel';
 import { Button } from '@/components/ui/button'; // shadcn button
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 const HeroSection: React.FC = () => {
   const testimonials = [
@@ -28,38 +28,35 @@ const HeroSection: React.FC = () => {
 
 
   return (
-    <section className="bg-secondary section-padding">
+    <section className="bg-secondary section-padding overflow-hidden"> {/* Added overflow-hidden for safety */}
       <div className="container mx-auto">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-16 items-center"> {/* Increased gap */}
           {/* Left Column: Image */}
-          <div className="md:order-1 order-2">
+          <div className="md:order-1 order-2 transform transition-all duration-500 ease-in-out hover:scale-103">
             <img
               src={heroImageUrl}
               alt="Patient consulting doctor"
-              className="rounded-2xl shadow-2xl w-full h-auto object-cover max-h-[500px]"
-              loading="lazy"
+              className="rounded-3xl shadow-2xl w-full h-auto object-cover max-h-[550px]" /* Larger rounding, max-h */
+              loading="eager" /* Eager load for LCP */
             />
           </div>
 
           {/* Right Column: Content + Testimonial Carousel */}
           <div className="md:order-2 order-1 text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl font-bold text-charcoal mb-6 leading-heading">
+            <h1 className="text-5xl md:text-6xl font-display text-charcoal mb-6 leading-tight"> {/* Use font-display, adjusted size */}
               Your Health, Simplified.
             </h1>
-            <p className="text-lg text-muted-foreground mb-8 leading-body">
+            <p className="text-xl text-muted-foreground mb-10 leading-relaxed"> {/* Adjusted size and leading */}
               Easily book appointments with our expert specialists online.
               Quality care is just a few clicks away.
             </p>
-            <div className="mb-10">
-               <Link to="/patient-intake">
-                <Button 
-                  size="lg" 
-                  className="btn-primary text-lg px-10 py-4" 
-                  aria-label="Book an appointment now"
-                >
+            <div className="mb-12">
+               <Button asChild size="lg" className="btn-primary text-lg px-10 py-4 group">
+                <Link to="/patient-intake" aria-label="Book an appointment now">
                   Book Appointment
-                </Button>
-              </Link>
+                  <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </Button>
             </div>
             <TestimonialCarousel testimonials={testimonials} />
           </div>
