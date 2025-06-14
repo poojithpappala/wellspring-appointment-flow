@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -57,8 +56,8 @@ export default {
 				'deep-teal': '#007A75',
 			},
 			fontFamily: {
-				sans: ['Poppins', 'sans-serif'],
-				display: ['Playfair Display', 'serif'],
+				sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+				display: ['Manrope', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
 			},
 			lineHeight: {
 				'heading': '1.3',
