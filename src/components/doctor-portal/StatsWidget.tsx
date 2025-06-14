@@ -11,10 +11,10 @@ interface StatItemProps {
 }
 
 const StatItem: React.FC<StatItemProps> = ({ icon: Icon, label, value, colorClass }) => (
-  <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+  <div className="flex items-center space-x-3 p-3 bg-muted rounded-lg">
     <Icon size={28} className={`${colorClass}`} />
     <div>
-      <p className="text-2xl font-semibold text-charcoal">{value}</p>
+      <p className="text-2xl font-semibold text-foreground">{value}</p>
       <p className="text-sm text-muted-foreground">{label}</p>
     </div>
   </div>
@@ -29,9 +29,9 @@ const StatsWidget: React.FC = () => {
   };
 
   return (
-    <Card className="shadow-soft rounded-2xl bg-background">
+    <Card className="shadow-soft rounded-2xl bg-card border-border">
       <CardHeader>
-        <CardTitle className="text-xl text-charcoal leading-heading">Quick Stats</CardTitle>
+        <CardTitle className="text-xl text-foreground leading-heading">Quick Stats</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <StatItem icon={ListChecks} label="Total Booked" value={stats.totalBooked} colorClass="text-blue-500" />

@@ -21,16 +21,16 @@ const DoctorDashboard: React.FC<DoctorDashboardProps> = ({ onLogout }) => {
   return (
     <div className="space-y-8">
       <div className="flex justify-between items-center">
-        <h2 className="text-3xl font-bold text-charcoal leading-heading">Doctor Dashboard</h2>
-        <Button variant="outline" onClick={onLogout} aria-label="Logout from doctor portal" className="border-deep-teal text-deep-teal hover:bg-deep-teal hover:text-white hover:scale-102">
+        <h2 className="text-3xl font-bold text-foreground leading-heading">Doctor Dashboard</h2>
+        <Button variant="outline" onClick={onLogout} aria-label="Logout from doctor portal" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:scale-102">
           <LogOut size={18} className="mr-2" /> Logout
         </Button>
       </div>
 
-      <Alert variant="default" className="bg-yellow-50 border-yellow-300 text-yellow-700 rounded-2xl">
-        <AlertTriangle className="h-5 w-5 text-yellow-600" />
-        <AlertTitle className="font-semibold text-yellow-800">Portfolio Demo Note</AlertTitle>
-        <AlertDescription>
+      <Alert variant="default" className="bg-yellow-50 dark:bg-yellow-900/20 border-yellow-300 dark:border-yellow-700 text-yellow-700 dark:text-yellow-300 rounded-2xl">
+        <AlertTriangle className="h-5 w-5 text-yellow-600 dark:text-yellow-400" />
+        <AlertTitle className="font-semibold text-yellow-800 dark:text-yellow-200">Portfolio Demo Note</AlertTitle>
+        <AlertDescription className="text-yellow-700 dark:text-yellow-300">
           This is a portfolio demonstration. No real patient data is stored or displayed. All information is fictional.
         </AlertDescription>
       </Alert>
@@ -38,7 +38,7 @@ const DoctorDashboard: React.FC<DoctorDashboardProps> = ({ onLogout }) => {
       <div className="grid md:grid-cols-3 gap-8">
         {/* Left Column: Upcoming Appointments */}
         <div className="md:col-span-2">
-          <h3 className="text-xl font-semibold text-charcoal mb-4 leading-heading">Upcoming Appointments</h3>
+          <h3 className="text-xl font-semibold text-foreground mb-4 leading-heading">Upcoming Appointments</h3>
           {upcomingAppointments.length > 0 ? (
             upcomingAppointments.map(app => <AppointmentCard key={app.id} appointment={app} />)
           ) : (

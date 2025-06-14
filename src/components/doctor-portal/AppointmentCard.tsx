@@ -16,20 +16,20 @@ interface AppointmentCardProps {
 
 const AppointmentCard: React.FC<AppointmentCardProps> = ({ appointment }) => {
   return (
-    <Card className="shadow-soft rounded-2xl mb-4 bg-background">
+    <Card className="shadow-soft rounded-2xl mb-4 bg-card border-border">
       <CardHeader>
-        <CardTitle className="text-lg text-deep-teal flex items-center leading-heading">
+        <CardTitle className="text-lg text-primary flex items-center leading-heading">
           <Calendar size={20} className="mr-2" /> {new Date(appointment.dateTime).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })}
           {' at '}
           {new Date(appointment.dateTime).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-2">
-        <div className="flex items-center text-charcoal">
+        <div className="flex items-center text-foreground">
           <User size={18} className="mr-2 text-muted-foreground" />
           <span>Patient: {appointment.patientFirstName}</span>
         </div>
-        <div className="flex items-start text-charcoal">
+        <div className="flex items-start text-foreground">
           <MessageSquare size={18} className="mr-2 mt-1 text-muted-foreground flex-shrink-0" />
           <span className="leading-body">Concern: {appointment.concern}</span>
         </div>

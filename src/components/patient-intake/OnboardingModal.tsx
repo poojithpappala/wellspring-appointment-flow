@@ -17,9 +17,9 @@ interface OnboardingModalProps {
 const OnboardingModal: React.FC<OnboardingModalProps> = ({ onClose }) => {
   return (
     <Dialog open={true} onOpenChange={(isOpen) => !isOpen && onClose()}>
-      <DialogContent className="sm:max-w-[425px] bg-background rounded-2xl shadow-2xl p-8">
+      <DialogContent className="sm:max-w-[425px] bg-background border-border rounded-2xl shadow-2xl p-8">
         <DialogHeader className="text-center">
-          <DialogTitle className="text-2xl font-semibold text-charcoal leading-heading mb-2">
+          <DialogTitle className="text-2xl font-semibold text-foreground leading-heading mb-2">
             Welcome to Your Consultation
           </DialogTitle>
           <DialogDescription className="text-muted-foreground leading-body">

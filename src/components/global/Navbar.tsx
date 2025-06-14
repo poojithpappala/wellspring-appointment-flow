@@ -20,22 +20,22 @@ const Navbar: React.FC = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  const activeLinkClass = "text-deep-teal font-semibold relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-deep-teal after:bottom-[-4px] after:left-0";
-  const inactiveLinkClass = "text-charcoal hover:text-deep-teal transition-colors duration-200 ease-in-out";
+  const activeLinkClass = "text-deep-teal dark:text-primary font-semibold relative after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-deep-teal dark:after:bg-primary after:bottom-[-4px] after:left-0";
+  const inactiveLinkClass = "text-foreground hover:text-deep-teal dark:hover:text-primary transition-colors duration-200 ease-in-out";
 
   return (
     <header className="bg-background/95 backdrop-blur-lg shadow-soft sticky top-0 z-50 border-b border-border/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3 text-deep-teal hover:opacity-80 transition-opacity duration-200">
+          <Link to="/" className="flex items-center space-x-3 text-deep-teal dark:text-primary hover:opacity-80 transition-opacity duration-200">
             <div className="relative">
               <Stethoscope size={36} strokeWidth={1.8} />
               <Crown size={16} className="absolute -top-1 -right-1 text-yellow-500" />
             </div>
             <div>
               <span className="font-display font-bold text-2xl tracking-tight">WellnessPortal</span>
-              <div className="text-xs text-deep-teal/70 font-medium -mt-1">Premium Healthcare</div>
+              <div className="text-xs text-deep-teal/70 dark:text-primary/70 font-medium -mt-1">Premium Healthcare</div>
             </div>
           </Link>
 
@@ -59,7 +59,7 @@ const Navbar: React.FC = () => {
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
             <Link to="/doctor">
-              <Button variant="ghost" className="text-charcoal hover:text-deep-teal">
+              <Button variant="ghost" className="text-foreground hover:text-deep-teal dark:hover:text-primary">
                 Doctor Portal
               </Button>
             </Link>
@@ -80,7 +80,7 @@ const Navbar: React.FC = () => {
               onClick={toggleMobileMenu}
               aria-label="Open main menu"
               aria-expanded={mobileMenuOpen}
-              className="text-charcoal hover:text-deep-teal hover:bg-gray-100/80 p-2 rounded-lg"
+              className="text-foreground hover:text-deep-teal dark:hover:text-primary hover:bg-muted p-2 rounded-lg"
             >
               {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </Button>
@@ -98,7 +98,7 @@ const Navbar: React.FC = () => {
                 to={link.path}
                 onClick={() => setMobileMenuOpen(false)}
                 className={({ isActive }) =>
-                  `${isActive ? 'bg-deep-teal/10 text-deep-teal font-semibold' : 'text-charcoal hover:text-deep-teal hover:bg-gray-50/70'} block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ease-in-out leading-body`
+                  `${isActive ? 'bg-primary/10 text-primary font-semibold' : 'text-foreground hover:text-primary hover:bg-muted/70'} block px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ease-in-out leading-body`
                 }
                 aria-label={link.title}
               >
@@ -106,9 +106,9 @@ const Navbar: React.FC = () => {
               </NavLink>
             ))}
             
-            <div className="border-t border-gray-200 pt-4 mt-4 space-y-2">
+            <div className="border-t border-border pt-4 mt-4 space-y-2">
               <Link to="/doctor" onClick={() => setMobileMenuOpen(false)}>
-                <Button variant="ghost" className="w-full justify-start text-charcoal hover:text-deep-teal">
+                <Button variant="ghost" className="w-full justify-start text-foreground hover:text-primary">
                   Doctor Portal
                 </Button>
               </Link>

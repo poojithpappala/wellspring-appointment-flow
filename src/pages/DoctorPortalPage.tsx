@@ -16,7 +16,7 @@ const DoctorPortalPage: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto section-padding">
+    <div className="container mx-auto section-padding min-h-screen bg-background text-foreground">
       <AnimatedSection>
         {!isAuthenticated ? (
           <LoginForm onLoginSuccess={handleLoginSuccess} />
