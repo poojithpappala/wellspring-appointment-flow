@@ -1,3 +1,4 @@
+
 import React from 'react';
 import TestimonialCarousel from './TestimonialCarousel';
 import { Button } from '@/components/ui/button'; // shadcn button
@@ -55,9 +56,9 @@ const HeroSection: React.FC = () => {
               Quality care is just a few clicks away, bringing peace of mind directly to you.
             </p>
             <div className="mb-16"> {/* Increased margin */}
-               <Button asChild size="lg" className="btn-primary text-lg px-10 py-7 group transform hover:shadow-xl"> {/* Increased py, added shadow */}
+               <Button asChild size="lg" className="btn-primary text-lg px-10 py-7 group transform hover:shadow-xl">
                 <Link to="/patient-intake" aria-label="Book an appointment now">
-                  <span className="inline-flex items-center"> {/* Ensure Link's content is a single child */}
+                  <span className="inline-flex items-center">
                     Book Appointment Now
                     <ArrowRight className="ml-2.5 h-6 w-6 transition-transform duration-300 group-hover:translate-x-1.5" />
                   </span>
@@ -73,3 +74,4 @@ const HeroSection: React.FC = () => {
 };
 
 export default HeroSection;
+
