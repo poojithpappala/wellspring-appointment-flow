@@ -50,7 +50,7 @@ const ArticlePage: React.FC = () => {
         <article className="bg-card dark:bg-card p-6 sm:p-10 rounded-3xl shadow-subtle-lift border border-border dark:border-border">
           <div className="mb-8">
             <img src={article.imageUrl} alt={article.title} className="w-full h-auto max-h-[500px] object-cover rounded-2xl shadow-lg mb-8"/>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground mb-4">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground dark:text-muted-foreground mb-4">
               <span className="flex items-center"><Tag size={16} className="mr-1.5 text-deep-teal dark:text-primary" /> {article.category}</span>
               <span className="flex items-center"><UserCircle size={16} className="mr-1.5 text-deep-teal dark:text-primary" /> By {article.author}</span>
               <span className="flex items-center"><CalendarDays size={16} className="mr-1.5 text-deep-teal dark:text-primary" /> {article.date}</span>
@@ -60,7 +60,7 @@ const ArticlePage: React.FC = () => {
           </div>
           
           <div className="prose prose-lg lg:prose-xl max-w-none text-foreground dark:text-foreground leading-relaxed space-y-6 selection:bg-deep-teal/20 dark:selection:bg-primary/20">
-            <style jsx>{`
+            <style>{`
               .prose h1 { 
                 color: hsl(var(--foreground)); 
                 font-weight: 700; 
