@@ -33,21 +33,24 @@ const Navbar: React.FC = () => {
   return (
     <header className="bg-background/95 backdrop-blur-lg shadow-soft sticky top-0 z-50 border-b border-border/60">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-20 sm:h-24">
           {/* Logo */}
-          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center space-x-3 text-deep-teal dark:text-primary hover:opacity-80 transition-opacity duration-200">
+          <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="flex items-center space-x-2 sm:space-x-3 text-deep-teal dark:text-primary hover:opacity-80 transition-opacity duration-200">
             <div className="relative">
-              <Stethoscope size={36} strokeWidth={1.8} />
-              <Crown size={16} className="absolute -top-1 -right-1 text-yellow-500" />
+              <Stethoscope size={32} strokeWidth={1.8} />
+              <Crown size={14} className="absolute -top-1 -right-1 text-yellow-500" />
             </div>
-            <div>
-              <span className="font-display font-bold text-2xl tracking-tight">WellnessPortal</span>
+            <div className="hidden sm:block">
+              <span className="font-display font-bold text-xl sm:text-2xl tracking-tight">WellnessPortal</span>
               <div className="text-xs text-deep-teal/70 dark:text-primary/70 font-medium -mt-1">Premium Healthcare</div>
+            </div>
+            <div className="sm:hidden">
+              <span className="font-display font-bold text-lg tracking-tight">WellnessPortal</span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-2 lg:space-x-4">
+          <nav className="hidden lg:flex items-center space-x-2 xl:space-x-4">
             {navLinks.map((link) => (
               <button
                 key={link.title}
@@ -63,17 +66,18 @@ const Navbar: React.FC = () => {
           </nav>
 
           {/* Right side buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
             <ThemeToggle />
-            <button onClick={() => handleNavigation('/doctor')}>
-              <Button variant="ghost" className="text-foreground hover:text-deep-teal dark:hover:text-primary hover:bg-muted/50 transition-all duration-200">
+            <button onClick={() => handleNavigation('/doctor')} className="hidden lg:block">
+              <Button variant="ghost" className="text-foreground hover:text-deep-teal dark:hover:text-primary hover:bg-muted/50 transition-all duration-200 text-sm">
                 Doctor Portal
               </Button>
             </button>
             <button onClick={() => handleNavigation('/patient-intake')}>
-              <Button className="bg-gradient-to-r from-deep-teal to-blue-600 hover:from-deep-teal/90 hover:to-blue-600/90 text-white px-6 py-2 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                <Crown className="w-4 h-4 mr-2" />
-                Book Premium
+              <Button className="bg-gradient-to-r from-deep-teal to-blue-600 hover:from-deep-teal/90 hover:to-blue-600/90 text-white px-3 py-2 sm:px-4 sm:py-2 lg:px-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-sm">
+                <Crown className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" />
+                <span className="hidden sm:inline">Book Premium</span>
+                <span className="sm:hidden">Book</span>
               </Button>
             </button>
           </div>
@@ -89,7 +93,7 @@ const Navbar: React.FC = () => {
               aria-expanded={mobileMenuOpen}
               className="text-foreground hover:text-deep-teal dark:hover:text-primary hover:bg-muted p-2 rounded-lg"
             >
-              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </Button>
           </div>
         </div>
@@ -97,7 +101,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu Panel */}
       {mobileMenuOpen && (
-        <div className="md:hidden absolute top-24 left-0 right-0 bg-background/95 backdrop-blur-lg shadow-xl z-40 rounded-b-2xl mx-2 border border-border/60">
+        <div className="md:hidden absolute top-20 sm:top-24 left-0 right-0 bg-background/95 backdrop-blur-lg shadow-xl z-40 rounded-b-2xl mx-2 border border-border/60">
           <div className="px-4 pt-3 pb-4 space-y-2 sm:px-5">
             {navLinks.map((link) => (
               <button

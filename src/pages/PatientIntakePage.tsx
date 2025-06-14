@@ -25,19 +25,23 @@ const PatientIntakePage: React.FC = () => {
       
       {!formSubmitted ? (
         <AnimatedSection>
-          <PatientIntakeForm onSubmitSuccess={handleFormSubmit} />
+          <div className="max-w-2xl mx-auto">
+            <PatientIntakeForm onSubmitSuccess={handleFormSubmit} />
+          </div>
         </AnimatedSection>
       ) : (
         <AnimatedSection>
-          <div className="text-center mb-8">
-            <h2 className="text-2xl font-semibold text-foreground leading-heading">
-              Thanks, {fullName}! You're one step away…
-            </h2>
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-6 sm:mb-8">
+              <h2 className="text-xl sm:text-2xl font-semibold text-foreground leading-heading">
+                Thanks, {fullName}! You're one step away…
+              </h2>
+            </div>
+            <CalendlyEmbed />
+            <p className="text-xs sm:text-sm text-muted-foreground text-center mt-4">
+              If you don't see the calendar, refresh or try again.
+            </p>
           </div>
-          <CalendlyEmbed />
-          <p className="text-sm text-muted-foreground text-center mt-4">
-            If you don't see the calendar, refresh or try again.
-          </p>
         </AnimatedSection>
       )}
     </div>
