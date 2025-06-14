@@ -1,7 +1,7 @@
 
 import React from 'react';
 import Navbar from './Navbar';
-import Footer from './Footer'; // Added Footer import
+import Footer from './Footer';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -9,12 +9,12 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col bg-background text-charcoal"> {/* Ensured text-charcoal is default */}
+    <div className="min-h-screen flex flex-col bg-background text-foreground transition-colors duration-200">
       <Navbar />
       <main className="flex-grow">
         {children}
       </main>
-      <Footer /> {/* Added Footer component */}
+      <Footer />
     </div>
   );
 };
