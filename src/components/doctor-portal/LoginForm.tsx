@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { AlertCircle, Lock } from "lucide-react";
+import { AlertCircle, Lock, Mail, Eye, EyeOff } from "lucide-react";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -28,6 +28,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
   const [loginError, setLoginError] = useState<string | null>(null);
   const [loginAttempts, setLoginAttempts] = useState(0);
   const [isLocked, setIsLocked] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -52,8 +53,17 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-2xl">
-      <h2 className="text-3xl font-bold text-charcoal mb-8 text-center leading-heading">Doctor Sign In</h2>
+    <div className="max-w-md mx-auto bg-card border border-border p-8 md:p-12 rounded-2xl shadow-2xl">
+      <h2 className="text-3xl font-bold text-foreground mb-2 text-center leading-heading">Doctor Portal</h2>
+      <p className="text-center text-muted-foreground mb-8">Sign in to access your dashboard</p>
+      
+      {/* Demo Credentials Info */}
+      <div className="mb-6 p-4 bg-muted rounded-lg border">
+        <h3 className="text-sm font-semibold text-foreground mb-2">Demo Credentials:</h3>
+        <p className="text-xs text-muted-foreground">Email: doctor@example.com</p>
+        <p className="text-xs text-muted-foreground">Password: Wellness123</p>
+      </div>
+
       {isLocked && (
         <Alert variant="destructive" className="mb-6">
           <Lock className="h-5 w-5" />
@@ -72,17 +82,55 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLoginSuccess }) => {
       )}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div>
-          <Label htmlFor="email-login" className="form-label">Email</Label>
-          <Input id="email-login" type="email" {...register('email')} className="input-field" disabled={isLocked} aria-required="true" aria-invalid={!!errors.email} />
-          {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email.message}</p>}
+          <Label htmlFor="email-login" className="form-label">
+            <Mail className="inline w-4 h-4 mr-1" />
+            Email Address *
+          </Label>
+          <Input 
+            id="email-login" 
+            type="email" 
+            {...register('email')} 
+            className="input-field" 
+            placeholder="Enter your email address"
+            disabled={isLocked} 
+            aria-required="true" 
+            aria-invalid={!!errors.email} 
+          />
+          {errors.email && <p className="text-sm text-destructive mt-1">{errors.email.message}</p>}
         </div>
         <div>
-          <Label htmlFor="password-login" className="form-label">Password</Label>
-          <Input id="password-login" type="password" {...register('password')} className="input-field" disabled={isLocked} aria-required="true" aria-invalid={!!errors.password} />
-          {errors.password && <p className="text-sm text-red-600 mt-1">{errors.password.message}</p>}
+          <Label htmlFor="password-login" className="form-label">
+            <Lock className="inline w-4 h-4 mr-1" />
+            Password *
+          </Label>
+          <div className="relative">
+            <Input 
+              id="password-login" 
+              type={showPassword ? "text" : "password"} 
+              {...register('password')} 
+              className="input-field pr-12" 
+              placeholder="Enter your password"
+              disabled={isLocked} 
+              aria-required="true" 
+              aria-invalid={!!errors.password} 
+            />
+            <button
+              type="button"
+              className="absolute inset-y-0 right-0 pr-3 flex items-center"
+              onClick={() => setShowPassword(!showPassword)}
+              disabled={isLocked}
+            >
+              {showPassword ? (
+                <EyeOff className="h-5 w-5 text-muted-foreground" />
+              ) : (
+                <Eye className="h-5 w-5 text-muted-foreground" />
+              )}
+            </button>
+          </div>
+          {errors.password && <p className="text-sm text-destructive mt-1">{errors.password.message}</p>}
         </div>
         <Button type="submit" className="w-full btn-primary py-3 text-lg" disabled={isLocked} aria-label="Sign in to doctor portal">
-          {isLocked ? 'Locked' : 'Sign In'}
+          {isLocked ? 'Account Locked' : 'Sign In'}
         </Button>
       </form>
     </div>

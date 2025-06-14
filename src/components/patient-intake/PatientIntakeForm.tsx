@@ -33,33 +33,71 @@ const PatientIntakeForm: React.FC<PatientIntakeFormProps> = ({ onSubmitSuccess }
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-2xl">
-      <h2 className="text-3xl font-bold text-charcoal mb-8 text-center leading-heading">Patient Intake</h2>
+    <div className="max-w-2xl mx-auto bg-card border border-border p-8 md:p-12 rounded-2xl shadow-2xl">
+      <h2 className="text-3xl font-bold text-foreground mb-8 text-center leading-heading">Patient Intake Form</h2>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div>
-          <Label htmlFor="fullName" className="form-label">Full Name</Label>
-          <Input id="fullName" {...register('fullName')} className="input-field" aria-required="true" aria-invalid={!!errors.fullName} />
-          {errors.fullName && <p className="text-sm text-red-600 mt-1">{errors.fullName.message}</p>}
+          <Label htmlFor="fullName" className="form-label">Full Name *</Label>
+          <Input 
+            id="fullName" 
+            {...register('fullName')} 
+            className="input-field" 
+            placeholder="Enter your full name"
+            aria-required="true" 
+            aria-invalid={!!errors.fullName} 
+          />
+          {errors.fullName && <p className="text-sm text-destructive mt-1">{errors.fullName.message}</p>}
         </div>
         <div>
-          <Label htmlFor="age" className="form-label">Age</Label>
-          <Input id="age" type="number" {...register('age')} className="input-field" aria-required="true" aria-invalid={!!errors.age} />
-          {errors.age && <p className="text-sm text-red-600 mt-1">{errors.age.message}</p>}
+          <Label htmlFor="age" className="form-label">Age *</Label>
+          <Input 
+            id="age" 
+            type="number" 
+            {...register('age')} 
+            className="input-field" 
+            placeholder="Enter your age"
+            aria-required="true" 
+            aria-invalid={!!errors.age} 
+          />
+          {errors.age && <p className="text-sm text-destructive mt-1">{errors.age.message}</p>}
         </div>
         <div>
-          <Label htmlFor="email" className="form-label">Email</Label>
-          <Input id="email" type="email" {...register('email')} className="input-field" aria-required="true" aria-invalid={!!errors.email} />
-          {errors.email && <p className="text-sm text-red-600 mt-1">{errors.email.message}</p>}
+          <Label htmlFor="email" className="form-label">Email Address *</Label>
+          <Input 
+            id="email" 
+            type="email" 
+            {...register('email')} 
+            className="input-field" 
+            placeholder="Enter your email address"
+            aria-required="true" 
+            aria-invalid={!!errors.email} 
+          />
+          {errors.email && <p className="text-sm text-destructive mt-1">{errors.email.message}</p>}
         </div>
         <div>
-          <Label htmlFor="phone" className="form-label">Phone</Label>
-          <Input id="phone" type="tel" {...register('phone')} className="input-field" aria-required="true" aria-invalid={!!errors.phone} />
-          {errors.phone && <p className="text-sm text-red-600 mt-1">{errors.phone.message}</p>}
+          <Label htmlFor="phone" className="form-label">Phone Number *</Label>
+          <Input 
+            id="phone" 
+            type="tel" 
+            {...register('phone')} 
+            className="input-field" 
+            placeholder="Enter your phone number"
+            aria-required="true" 
+            aria-invalid={!!errors.phone} 
+          />
+          {errors.phone && <p className="text-sm text-destructive mt-1">{errors.phone.message}</p>}
         </div>
         <div>
-          <Label htmlFor="mainConcern" className="form-label">Describe Your Main Concern</Label>
-          <Textarea id="mainConcern" {...register('mainConcern')} className="input-field min-h-[120px]" aria-required="true" aria-invalid={!!errors.mainConcern} />
-          {errors.mainConcern && <p className="text-sm text-red-600 mt-1">{errors.mainConcern.message}</p>}
+          <Label htmlFor="mainConcern" className="form-label">Main Health Concern *</Label>
+          <Textarea 
+            id="mainConcern" 
+            {...register('mainConcern')} 
+            className="input-field min-h-[120px]" 
+            placeholder="Please describe your main health concern or reason for consultation"
+            aria-required="true" 
+            aria-invalid={!!errors.mainConcern} 
+          />
+          {errors.mainConcern && <p className="text-sm text-destructive mt-1">{errors.mainConcern.message}</p>}
         </div>
         <Button type="submit" className="w-full btn-primary py-3 text-lg" aria-label="Submit patient information and continue">
           Submit & Continue
