@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import AnimatedSection from '@/components/global/AnimatedSection';
@@ -26,13 +25,33 @@ const ArticlePage: React.FC = () => {
     );
   }
 
-  // Basic HTML sanitizer (very naive, for demonstration - use a library like DOMPurify in production)
-  const sanitizeContent = (htmlString: string) => {
-    // Replace newlines with <br> tags for display
-    let sanitized = htmlString.replace(/\n/g, '<br />');
-    // Example: very basic script tag removal (NOT secure for untrusted content)
-    sanitized = sanitized.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
-    return sanitized;
+  // Convert markdown-like formatting to HTML
+  const formatContent = (content: string) => {
+    let formatted = content;
+    
+    // Convert headings
+    formatted = formatted.replace(/### (.*$)/gim, '<h3>$1</h3>');
+    formatted = formatted.replace(/## (.*$)/gim, '<h2>$1</h2>');
+    formatted = formatted.replace(/# (.*$)/gim, '<h1>$1</h1>');
+    
+    // Convert bold text
+    formatted = formatted.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');
+    
+    // Convert italic text
+    formatted = formatted.replace(/\*(.*?)\*/gim, '<em>$1</em>');
+    
+    // Convert line breaks
+    formatted = formatted.replace(/\n\n/g, '</p><p>');
+    formatted = formatted.replace(/\n/g, '<br />');
+    
+    // Wrap in paragraphs
+    formatted = '<p>' + formatted + '</p>';
+    
+    // Clean up empty paragraphs
+    formatted = formatted.replace(/<p><\/p>/g, '');
+    formatted = formatted.replace(/<p><br \/><\/p>/g, '');
+    
+    return formatted;
   };
 
   return (
@@ -127,7 +146,7 @@ const ArticlePage: React.FC = () => {
                 opacity: 0.8; 
               }
             `}</style>
-            <div dangerouslySetInnerHTML={{ __html: sanitizeContent(article.content) }} />
+            <div dangerouslySetInnerHTML={{ __html: formatContent(article.content) }} />
           </div>
         </article>
       </AnimatedSection>
