@@ -34,7 +34,7 @@ const HeroSection: React.FC = () => {
   const heroImageUrl = "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yJTIwcGF0aWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1200&q=80";
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30 section-padding overflow-hidden pt-8 pb-16 md:pt-12 md:pb-20">
+    <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900/50 section-padding overflow-hidden pt-8 pb-16 md:pt-12 md:pb-20">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-deep-teal/5 rounded-full blur-3xl"></div>
@@ -51,7 +51,7 @@ const HeroSection: React.FC = () => {
                 Trusted by 10,000+ patients
               </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display text-gray-900 leading-tight font-bold">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display text-gray-900 dark:text-white leading-tight font-bold">
                 Premium Healthcare,
                 <br />
                 <span className="bg-gradient-to-r from-deep-teal to-blue-600 bg-clip-text text-transparent">
@@ -59,7 +59,7 @@ const HeroSection: React.FC = () => {
                 </span>
               </h1>
               
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl mx-auto lg:mx-0">
                 Experience world-class healthcare with our network of elite specialists. 
                 Premium care, seamless booking, exceptional outcomes.
               </p>
@@ -70,7 +70,7 @@ const HeroSection: React.FC = () => {
               {features.map((feature, index) => (
                 <div key={index} className="flex items-center space-x-3">
                   <CheckCircle className="h-5 w-5 text-deep-teal flex-shrink-0" />
-                  <span className="text-gray-700 font-medium">{feature}</span>
+                  <span className="text-gray-700 dark:text-gray-300 font-medium">{feature}</span>
                 </div>
               ))}
             </div>
@@ -86,7 +86,7 @@ const HeroSection: React.FC = () => {
                 </Button>
               </Link>
               
-              <Button variant="outline" size="lg" className="border-2 border-gray-300 text-gray-700 hover:border-deep-teal hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300">
+              <Button variant="outline" size="lg" className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-deep-teal hover:text-deep-teal dark:hover:border-deep-teal dark:hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700">
                 Watch Demo
               </Button>
             </div>
@@ -101,7 +101,7 @@ const HeroSection: React.FC = () => {
               <div className="absolute -inset-4 bg-gradient-to-r from-deep-teal/20 to-blue-600/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
               
               {/* Main image */}
-              <div className="relative bg-white p-2 rounded-3xl shadow-2xl">
+              <div className="relative bg-white dark:bg-gray-800 p-2 rounded-3xl shadow-2xl">
                 <img
                   src={heroImageUrl}
                   alt="Premium healthcare consultation"
@@ -111,17 +111,17 @@ const HeroSection: React.FC = () => {
               </div>
               
               {/* Floating stats cards */}
-              <div className="absolute -top-6 -left-6 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
+              <div className="absolute -top-6 -left-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4 border border-gray-100 dark:border-gray-700">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-deep-teal">98%</div>
-                  <div className="text-sm text-gray-600">Satisfaction Rate</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">Satisfaction Rate</div>
                 </div>
               </div>
               
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-4 border border-gray-100">
+              <div className="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-4 border border-gray-100 dark:border-gray-700">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-deep-teal">24/7</div>
-                  <div className="text-sm text-gray-600">Support Available</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">Support Available</div>
                 </div>
               </div>
             </div>

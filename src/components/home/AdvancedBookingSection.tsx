@@ -34,7 +34,7 @@ const bookingFeatures = [
 
 const AdvancedBookingSection: React.FC = () => {
   return (
-    <section className="section-padding bg-gradient-to-b from-gray-50 to-white">
+    <section className="section-padding bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left: Content */}
@@ -45,13 +45,13 @@ const AdvancedBookingSection: React.FC = () => {
                 Advanced Booking System
               </div>
               
-              <h2 className="text-4xl md:text-5xl font-display text-gray-900 mb-6 leading-tight">
+              <h2 className="text-4xl md:text-5xl font-display text-gray-900 dark:text-white mb-6 leading-tight">
                 Book Appointments in
                 <span className="bg-gradient-to-r from-deep-teal to-blue-600 bg-clip-text text-transparent"> Seconds, </span>
                 Not Minutes
               </h2>
               
-              <p className="text-xl text-gray-600 leading-relaxed mb-8">
+              <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
                 Our revolutionary booking system uses AI to instantly match you with the perfect 
                 specialist based on your needs, location, and schedule preferences.
               </p>
@@ -64,8 +64,8 @@ const AdvancedBookingSection: React.FC = () => {
                     <feature.icon className="h-6 w-6 text-deep-teal" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">{feature.title}</h3>
-                    <p className="text-gray-600 mb-2">{feature.description}</p>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{feature.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-2">{feature.description}</p>
                     <span className="text-sm font-medium text-deep-teal">{feature.highlight}</span>
                   </div>
                 </div>
@@ -82,7 +82,7 @@ const AdvancedBookingSection: React.FC = () => {
                 </Button>
               </Link>
               
-              <Button variant="outline" size="lg" className="border-2 border-gray-300 text-gray-700 hover:border-deep-teal hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl">
+              <Button variant="outline" size="lg" className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-deep-teal hover:text-deep-teal dark:hover:border-deep-teal dark:hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300">
                 Watch Demo
               </Button>
             </div>
@@ -90,7 +90,7 @@ const AdvancedBookingSection: React.FC = () => {
 
           {/* Right: Interactive Booking Preview */}
           <div className="relative">
-            <Card className="overflow-hidden shadow-2xl border-0">
+            <Card className="overflow-hidden shadow-2xl border-0 bg-white dark:bg-gray-800">
               <CardContent className="p-0">
                 <div className="bg-gradient-to-r from-deep-teal to-blue-600 p-6 text-white">
                   <h3 className="text-xl font-semibold mb-2">Book Your Consultation</h3>
@@ -103,7 +103,7 @@ const AdvancedBookingSection: React.FC = () => {
                       <Button 
                         key={index}
                         variant={index === 0 ? "default" : "outline"}
-                        className={`text-sm ${index === 0 ? 'bg-deep-teal hover:bg-deep-teal/90' : ''}`}
+                        className={`text-sm ${index === 0 ? 'bg-deep-teal hover:bg-deep-teal/90' : 'border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800'}`}
                       >
                         {time}
                       </Button>
@@ -112,10 +112,10 @@ const AdvancedBookingSection: React.FC = () => {
                   
                   <div className="space-y-3">
                     {['09:00 AM - Dr. Sarah Chen', '02:30 PM - Dr. Michael Ross', '05:00 PM - Dr. Lisa Park'].map((slot, index) => (
-                      <div key={index} className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:border-deep-teal transition-colors cursor-pointer">
+                      <div key={index} className="flex items-center justify-between p-3 border border-gray-200 dark:border-gray-700 rounded-lg hover:border-deep-teal transition-colors cursor-pointer">
                         <div className="flex items-center space-x-3">
                           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                          <span className="text-sm font-medium">{slot}</span>
+                          <span className="text-sm font-medium text-gray-900 dark:text-white">{slot}</span>
                         </div>
                         <span className="text-xs text-deep-teal font-medium">Available</span>
                       </div>
@@ -126,10 +126,10 @@ const AdvancedBookingSection: React.FC = () => {
             </Card>
             
             {/* Floating stats */}
-            <div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-lg p-4 border border-gray-100">
+            <div className="absolute -top-4 -right-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 border border-gray-100 dark:border-gray-700">
               <div className="text-center">
                 <div className="text-lg font-bold text-deep-teal">&lt; 30s</div>
-                <div className="text-xs text-gray-600">Avg. Booking Time</div>
+                <div className="text-xs text-gray-600 dark:text-gray-400">Avg. Booking Time</div>
               </div>
             </div>
           </div>

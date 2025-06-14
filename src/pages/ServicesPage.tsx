@@ -48,7 +48,7 @@ const ServicesPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900/50">
       {/* Hero Section */}
       <section className="relative section-padding pt-16 pb-20 overflow-hidden">
         <div className="absolute inset-0">
@@ -64,7 +64,7 @@ const ServicesPage: React.FC = () => {
                 Premium Healthcare Services
               </div>
               
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-gray-900 dark:text-white mb-6 leading-tight">
                 Comprehensive
                 <br />
                 <span className="bg-gradient-to-r from-deep-teal to-blue-600 bg-clip-text text-transparent">
@@ -72,7 +72,7 @@ const ServicesPage: React.FC = () => {
                 </span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed mb-8 max-w-3xl mx-auto">
                 Experience healthcare reimagined with our comprehensive suite of services designed to support your health journey at every step.
               </p>
               
@@ -83,7 +83,11 @@ const ServicesPage: React.FC = () => {
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Button variant="outline" size="lg" className="border-2 border-gray-300 text-gray-700 hover:border-deep-teal hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-deep-teal hover:text-deep-teal dark:hover:border-deep-teal dark:hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700"
+                >
                   Learn More
                 </Button>
               </div>
@@ -93,7 +97,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding bg-white/80 backdrop-blur-sm">
+      <section className="section-padding bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
         <div className="container mx-auto">
           <AnimatedSection>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -104,8 +108,8 @@ const ServicesPage: React.FC = () => {
                       <stat.icon className="w-8 h-8 text-deep-teal" />
                     </div>
                   </div>
-                  <div className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-1">{stat.number}</div>
-                  <div className="text-gray-600 font-medium">{stat.label}</div>
+                  <div className="text-3xl md:text-4xl font-display font-bold text-gray-900 dark:text-white mb-1">{stat.number}</div>
+                  <div className="text-gray-600 dark:text-gray-400 font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -118,10 +122,10 @@ const ServicesPage: React.FC = () => {
         <div className="container mx-auto">
           <AnimatedSection>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6">
                 Our Premium Services
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Discover our comprehensive range of healthcare services designed to meet all your medical needs with excellence and compassion.
               </p>
             </div>
@@ -130,7 +134,7 @@ const ServicesPage: React.FC = () => {
           <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-10">
             {services.map((service, index) => (
               <AnimatedSection key={index} className="h-full">
-                <Card className="relative shadow-xl rounded-3xl h-full flex flex-col p-2 group hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm hover:-translate-y-2 overflow-hidden">
+                <Card className="relative shadow-xl rounded-3xl h-full flex flex-col p-2 group hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm hover:-translate-y-2 overflow-hidden">
                   {/* Badge */}
                   <div className={`absolute top-6 right-6 px-3 py-1 rounded-full text-xs font-semibold ${
                     service.available 
@@ -147,19 +151,19 @@ const ServicesPage: React.FC = () => {
                     <div className="p-4 bg-deep-teal/10 rounded-2xl inline-block group-hover:bg-deep-teal/20 group-hover:scale-110 transition-all duration-300">
                       {service.icon}
                     </div>
-                    <CardTitle className="text-2xl font-display text-gray-900 group-hover:text-deep-teal transition-colors duration-300">
+                    <CardTitle className="text-2xl font-display text-gray-900 dark:text-white group-hover:text-deep-teal transition-colors duration-300">
                       {service.title}
                     </CardTitle>
                   </CardHeader>
                   
                   <CardContent className="flex-grow text-center px-8 pb-8 relative z-10">
-                    <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">{service.description}</p>
                     
                     <div className="space-y-3 mb-6">
                       {service.features.map((feature, featureIndex) => (
                         <div key={featureIndex} className="flex items-center space-x-3 text-left">
                           <CheckCircle className="h-5 w-5 text-deep-teal flex-shrink-0" />
-                          <span className="text-gray-700 text-sm">{feature}</span>
+                          <span className="text-gray-700 dark:text-gray-300 text-sm">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -168,7 +172,7 @@ const ServicesPage: React.FC = () => {
                       className={`w-full rounded-xl font-semibold transition-all duration-300 ${
                         service.available
                           ? 'bg-deep-teal hover:bg-deep-teal/90 text-white shadow-lg hover:shadow-xl'
-                          : 'bg-gray-100 text-gray-500 cursor-not-allowed'
+                          : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed'
                       }`}
                       disabled={!service.available}
                     >

@@ -64,7 +64,7 @@ const AboutUsPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900/50">
       {/* Hero Section */}
       <section className="relative section-padding pt-16 pb-20 overflow-hidden">
         <div className="absolute inset-0">
@@ -80,7 +80,7 @@ const AboutUsPage: React.FC = () => {
                 Our Commitment to Excellence
               </div>
               
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-gray-900 mb-6 leading-tight">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-gray-900 dark:text-white mb-6 leading-tight">
                 About
                 <br />
                 <span className="bg-gradient-to-r from-deep-teal to-blue-600 bg-clip-text text-transparent">
@@ -88,7 +88,7 @@ const AboutUsPage: React.FC = () => {
                 </span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 leading-relaxed mb-8 max-w-3xl mx-auto">
                 Learn about our mission, values, and the dedicated team behind our premium healthcare services.
               </p>
               
@@ -98,7 +98,12 @@ const AboutUsPage: React.FC = () => {
                     Book Consultation
                   </Button>
                 </Link>
-                <Button variant="outline" size="lg" className="border-2 border-gray-300 text-gray-700 hover:border-deep-teal hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-deep-teal hover:text-deep-teal dark:hover:border-deep-teal dark:hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700"
+                  onClick={() => handleNavigation('/services')}
+                >
                   Explore Services
                 </Button>
               </div>
@@ -108,18 +113,18 @@ const AboutUsPage: React.FC = () => {
       </section>
 
       {/* Story Section */}
-      <section className="section-padding bg-white/80 backdrop-blur-sm">
+      <section className="section-padding bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
         <div className="container mx-auto">
           <AnimatedSection>
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6">
                   Our Story
                 </h2>
-                <p className="text-xl text-gray-600 leading-relaxed mb-6">
+                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
                   Founded in 2024, WellnessPortal was born out of a vision to revolutionize healthcare access and quality. We saw an opportunity to leverage technology to connect patients with the best specialists, provide personalized care, and simplify the healthcare journey.
                 </p>
-                <p className="text-xl text-gray-600 leading-relaxed">
+                <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
                   Our commitment to innovation, compassion, and excellence drives us to continuously improve and expand our services, ensuring that our patients receive the best possible care.
                 </p>
               </div>
@@ -140,22 +145,22 @@ const AboutUsPage: React.FC = () => {
         <div className="container mx-auto">
           <AnimatedSection>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6">
                 Meet Our Team
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 Our team comprises experienced healthcare professionals, technology experts, and dedicated support staff, all working together to provide you with the best possible care.
               </p>
             </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
               {teamMembers.map((member, index) => (
-                <div key={index} className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                <div key={index} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
                   <img src={member.imageUrl} alt={member.name} className="w-full h-64 object-cover object-center" />
                   <div className="p-6">
-                    <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">{member.name}</h3>
+                    <h3 className="text-2xl font-display font-bold text-gray-900 dark:text-white mb-2">{member.name}</h3>
                     <p className="text-deep-teal font-medium mb-3">{member.title}</p>
-                    <p className="text-gray-600 leading-relaxed">{member.description}</p>
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{member.description}</p>
                   </div>
                 </div>
               ))}
@@ -165,14 +170,14 @@ const AboutUsPage: React.FC = () => {
       </section>
 
       {/* Values Section */}
-      <section className="section-padding bg-white/80 backdrop-blur-sm">
+      <section className="section-padding bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm">
         <div className="container mx-auto">
           <AnimatedSection>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6">
                 Our Core Values
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 These values guide our decisions and actions, ensuring we always put our patients first.
               </p>
             </div>
@@ -185,8 +190,8 @@ const AboutUsPage: React.FC = () => {
                       {value.icon}
                     </div>
                   </div>
-                  <h3 className="text-xl font-display font-bold text-gray-900 mb-2">{value.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                  <h3 className="text-xl font-display font-bold text-gray-900 dark:text-white mb-2">{value.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{value.description}</p>
                 </div>
               ))}
             </div>
@@ -199,10 +204,10 @@ const AboutUsPage: React.FC = () => {
         <div className="container mx-auto">
           <AnimatedSection>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6">
                 Our Achievements
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
                 We are proud of the impact we've made in the lives of our patients and the healthcare industry.
               </p>
             </div>
@@ -215,8 +220,8 @@ const AboutUsPage: React.FC = () => {
                       <stat.icon className="w-8 h-8 text-deep-teal" />
                     </div>
                   </div>
-                  <div className="text-3xl md:text-4xl font-display font-bold text-gray-900 mb-1">{stat.number}</div>
-                  <div className="text-gray-600 font-medium">{stat.label}</div>
+                  <div className="text-3xl md:text-4xl font-display font-bold text-gray-900 dark:text-white mb-1">{stat.number}</div>
+                  <div className="text-gray-600 dark:text-gray-400 font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>

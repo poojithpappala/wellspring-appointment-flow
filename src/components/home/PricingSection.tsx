@@ -60,7 +60,7 @@ const pricingPlans = [
 
 const PricingSection: React.FC = () => {
   return (
-    <section className="section-padding bg-gradient-to-b from-white to-gray-50">
+    <section className="section-padding bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
       <div className="container mx-auto">
         <div className="text-center mb-20">
           <div className="inline-flex items-center px-4 py-2 bg-deep-teal/10 rounded-full text-sm font-medium text-deep-teal mb-6">
@@ -68,13 +68,13 @@ const PricingSection: React.FC = () => {
             Premium Healthcare Plans
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-display text-gray-900 mb-6 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-display text-gray-900 dark:text-white mb-6 leading-tight">
             Choose Your
             <span className="bg-gradient-to-r from-deep-teal to-blue-600 bg-clip-text text-transparent"> Premium </span>
             Healthcare Experience
           </h2>
           
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             From essential care to executive concierge services, we have the perfect plan 
             to match your healthcare needs and lifestyle.
           </p>
@@ -84,10 +84,10 @@ const PricingSection: React.FC = () => {
           {pricingPlans.map((plan, index) => (
             <Card 
               key={index}
-              className={`relative overflow-hidden transition-all duration-500 transform hover:-translate-y-3 ${
+              className={`relative overflow-hidden transition-all duration-500 transform hover:-translate-y-3 bg-white dark:bg-gray-800 ${
                 plan.popular 
                   ? 'border-2 border-deep-teal shadow-2xl scale-105' 
-                  : 'border border-gray-200 shadow-lg hover:shadow-2xl'
+                  : 'border border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-2xl'
               }`}
             >
               {plan.popular && (
@@ -104,12 +104,12 @@ const PricingSection: React.FC = () => {
                   {index === 2 && <Star className="h-8 w-8 text-white" />}
                 </div>
                 
-                <CardTitle className="text-2xl font-display mb-2">{plan.name}</CardTitle>
-                <p className="text-gray-600 text-sm mb-4">{plan.description}</p>
+                <CardTitle className="text-2xl font-display mb-2 text-gray-900 dark:text-white">{plan.name}</CardTitle>
+                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">{plan.description}</p>
                 
                 <div className="mb-6">
-                  <span className="text-5xl font-bold text-gray-900">${plan.price}</span>
-                  <span className="text-gray-600">/{plan.period}</span>
+                  <span className="text-5xl font-bold text-gray-900 dark:text-white">${plan.price}</span>
+                  <span className="text-gray-600 dark:text-gray-400">/{plan.period}</span>
                 </div>
               </CardHeader>
               
@@ -118,7 +118,7 @@ const PricingSection: React.FC = () => {
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start">
                       <Check className="h-5 w-5 text-deep-teal mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
+                      <span className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -128,7 +128,7 @@ const PricingSection: React.FC = () => {
                     className={`w-full py-4 text-lg font-semibold rounded-xl transition-all duration-300 ${
                       plan.popular
                         ? 'bg-gradient-to-r from-deep-teal to-blue-600 hover:from-deep-teal/90 hover:to-blue-600/90 text-white shadow-lg hover:shadow-xl'
-                        : 'bg-white border-2 border-gray-300 text-gray-700 hover:border-deep-teal hover:text-deep-teal'
+                        : 'bg-white dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:border-deep-teal hover:text-deep-teal dark:hover:border-deep-teal dark:hover:text-deep-teal'
                     }`}
                   >
                     {plan.popular ? 'Start Premium Journey' : 'Get Started'}
@@ -143,8 +143,8 @@ const PricingSection: React.FC = () => {
         </div>
         
         <div className="text-center mt-16">
-          <p className="text-gray-600 mb-4">Need a custom enterprise solution?</p>
-          <Button variant="outline" size="lg" className="border-2 border-deep-teal text-deep-teal hover:bg-deep-teal hover:text-white px-8 py-3 rounded-xl">
+          <p className="text-gray-600 dark:text-gray-400 mb-4">Need a custom enterprise solution?</p>
+          <Button variant="outline" size="lg" className="border-2 border-deep-teal text-deep-teal hover:bg-deep-teal hover:text-white dark:hover:bg-deep-teal dark:hover:text-white px-8 py-3 rounded-xl bg-white dark:bg-gray-800">
             Contact Sales Team
           </Button>
         </div>
