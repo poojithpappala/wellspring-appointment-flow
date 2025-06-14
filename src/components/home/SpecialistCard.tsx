@@ -18,23 +18,23 @@ interface SpecialistCardProps {
 
 const SpecialistCard: React.FC<SpecialistCardProps> = ({ specialist }) => {
   return (
-    <Card className="flex flex-col h-full shadow-soft rounded-2xl overflow-hidden transition-transform duration-300 hover:shadow-xl hover:scale-102">
-      <CardHeader className="p-0">
+    <Card className="flex flex-col h-full shadow-soft rounded-2xl overflow-hidden group transition-all duration-300 ease-in-out hover:shadow-xl hover:scale-102">
+      <CardHeader className="p-0 overflow-hidden">
         <img
           src={specialist.imageUrl}
           alt={`Dr. ${specialist.name} portrait`}
-          className="w-full h-56 object-cover"
+          className="w-full h-56 object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
           loading="lazy"
         />
       </CardHeader>
       <CardContent className="p-6 flex-grow">
-        <CardTitle className="text-xl font-semibold text-charcoal mb-1 leading-heading">{specialist.name}</CardTitle>
+        <CardTitle className="text-xl font-semibold text-charcoal mb-2 leading-heading">{specialist.name}</CardTitle>
         <p className="text-deep-teal font-medium mb-3">{specialist.specialty}</p>
         <p className="text-sm text-muted-foreground leading-body">{specialist.bioSample}</p>
       </CardContent>
       <CardFooter className="p-6 pt-0">
         <Link to="/patient-intake" className="w-full">
-          <Button variant="outline" className="w-full border-deep-teal text-deep-teal hover:bg-deep-teal hover:text-white transition-colors hover:scale-102" aria-label={`Book an appointment with Dr. ${specialist.name}`}>
+          <Button variant="outline" className="w-full border-deep-teal text-deep-teal hover:bg-deep-teal hover:text-white transition-all duration-300 ease-in-out hover:scale-105 active:scale-95" aria-label={`Book an appointment with Dr. ${specialist.name}`}>
             Book with Dr. {specialist.name.split(' ').pop()}
           </Button>
         </Link>
