@@ -1,10 +1,9 @@
-
 import React from 'react';
 import AnimatedSection from '@/components/global/AnimatedSection';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Briefcase, Activity, ShieldCheck, HeartPulse, ArrowRight, CheckCircle, Sparkles, Award, Clock } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const services = [
   {
@@ -41,6 +40,13 @@ const stats = [
 ];
 
 const ServicesPage: React.FC = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
       {/* Hero Section */}
@@ -194,11 +200,13 @@ const ServicesPage: React.FC = () => {
                     Start Your Journey
                   </Button>
                 </Link>
-                <Link to="/contact">
-                  <Button size="lg" className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300">
-                    Contact Us
-                  </Button>
-                </Link>
+                <Button 
+                  size="lg" 
+                  className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300"
+                  onClick={() => handleNavigation('/contact')}
+                >
+                  Contact Us
+                </Button>
               </div>
             </div>
           </AnimatedSection>

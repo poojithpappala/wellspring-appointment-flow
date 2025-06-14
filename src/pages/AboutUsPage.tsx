@@ -1,50 +1,67 @@
-
 import React from 'react';
 import AnimatedSection from '@/components/global/AnimatedSection';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Stethoscope, Users, Target, Award, Shield, Clock, Heart, CheckCircle, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Award, CheckCircle, Clock, HeartPulse, Lightbulb, Rocket, ShieldCheck, User2 } from 'lucide-react';
+
+const teamMembers = [
+  {
+    name: 'Dr. Eleanor Vance',
+    title: 'Chief Medical Officer',
+    description: 'A visionary leader with over 20 years of experience in healthcare innovation.',
+    imageUrl: 'https://images.unsplash.com/photo-1612349378822-63254c36eaf8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+  },
+  {
+    name: 'Michael Davis',
+    title: 'Head of Technology',
+    description: 'Expert in building scalable and secure healthcare platforms.',
+    imageUrl: 'https://images.unsplash.com/photo-1580489843578-3907f860d707?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1161&q=80',
+  },
+  {
+    name: 'Sarah Johnson',
+    title: 'Patient Care Manager',
+    description: 'Dedicated to ensuring every patient receives personalized and compassionate care.',
+    imageUrl: 'https://images.unsplash.com/photo-1544005313-943150e4f986?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80',
+  },
+];
+
+const values = [
+  {
+    icon: <Lightbulb size={40} className="text-deep-teal" />,
+    title: 'Innovation',
+    description: 'We embrace cutting-edge technology to deliver the best healthcare solutions.',
+  },
+  {
+    icon: <HeartPulse size={40} className="text-deep-teal" />,
+    title: 'Compassion',
+    description: 'We are committed to providing empathetic and personalized care to every patient.',
+  },
+  {
+    icon: <ShieldCheck size={40} className="text-deep-teal" />,
+    title: 'Integrity',
+    description: 'We uphold the highest ethical standards in all our interactions.',
+  },
+  {
+    icon: <Rocket size={40} className="text-deep-teal" />,
+    title: 'Excellence',
+    description: 'We strive for excellence in every aspect of our service, from technology to patient care.',
+  },
+];
+
+const stats = [
+  { number: "15+", label: "Years of Experience", icon: Clock },
+  { number: "5000+", label: "Happy Patients", icon: User2 },
+  { number: "99%", label: "Satisfaction Rate", icon: CheckCircle },
+  { number: "10+", label: "Awards Won", icon: Award }
+];
 
 const AboutUsPage: React.FC = () => {
-  const stats = [
-    { number: "10,000+", label: "Happy Patients", icon: Users },
-    { number: "500+", label: "Expert Doctors", icon: Stethoscope },
-    { number: "98%", label: "Success Rate", icon: Award },
-    { number: "24/7", label: "Support", icon: Clock }
-  ];
+  const navigate = useNavigate();
 
-  const values = [
-    {
-      icon: Heart,
-      title: "Compassionate Care",
-      description: "Every interaction is guided by empathy and understanding, ensuring you feel heard and valued."
-    },
-    {
-      icon: Shield,
-      title: "Trust & Security",
-      description: "Your health data is protected with bank-level security while maintaining complete transparency."
-    },
-    {
-      icon: Target,
-      title: "Precision Medicine",
-      description: "Personalized treatment plans tailored to your unique health profile and lifestyle needs."
-    },
-    {
-      icon: Award,
-      title: "Excellence",
-      description: "We maintain the highest standards of medical care through continuous innovation and improvement."
-    }
-  ];
-
-  const features = [
-    "Board-certified specialists across 20+ medical fields",
-    "Same-day appointments with 95% availability",
-    "Secure, HIPAA-compliant telemedicine platform",
-    "Integrated health records and treatment tracking",
-    "24/7 emergency consultation access",
-    "Multilingual support in 10+ languages"
-  ];
+  const handleNavigation = (path: string) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/30">
@@ -59,32 +76,30 @@ const AboutUsPage: React.FC = () => {
           <AnimatedSection>
             <div className="text-center max-w-4xl mx-auto">
               <div className="inline-flex items-center px-4 py-2 bg-deep-teal/10 rounded-full text-sm font-medium text-deep-teal mb-6">
-                <Award className="w-4 h-4 mr-2" />
-                Award-winning healthcare platform
+                <ShieldCheck className="w-4 h-4 mr-2" />
+                Our Commitment to Excellence
               </div>
               
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold text-gray-900 mb-6 leading-tight">
-                Redefining Healthcare
+                About
                 <br />
                 <span className="bg-gradient-to-r from-deep-teal to-blue-600 bg-clip-text text-transparent">
-                  for Everyone
+                  WellnessPortal
                 </span>
               </h1>
               
               <p className="text-xl md:text-2xl text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto">
-                We're on a mission to make premium healthcare accessible, transparent, and personalized. 
-                Join thousands who've transformed their health journey with us.
+                Learn about our mission, values, and the dedicated team behind our premium healthcare services.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/patient-intake">
-                  <Button size="lg" className="bg-deep-teal hover:bg-deep-teal/90 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 group">
-                    Start Your Journey
-                    <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  <Button size="lg" className="bg-deep-teal hover:bg-deep-teal/90 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                    Book Consultation
                   </Button>
                 </Link>
                 <Button variant="outline" size="lg" className="border-2 border-gray-300 text-gray-700 hover:border-deep-teal hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300">
-                  Watch Our Story
+                  Explore Services
                 </Button>
               </div>
             </div>
@@ -92,10 +107,106 @@ const AboutUsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Story Section */}
       <section className="section-padding bg-white/80 backdrop-blur-sm">
         <div className="container mx-auto">
           <AnimatedSection>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+                  Our Story
+                </h2>
+                <p className="text-xl text-gray-600 leading-relaxed mb-6">
+                  Founded in 2024, WellnessPortal was born out of a vision to revolutionize healthcare access and quality. We saw an opportunity to leverage technology to connect patients with the best specialists, provide personalized care, and simplify the healthcare journey.
+                </p>
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  Our commitment to innovation, compassion, and excellence drives us to continuously improve and expand our services, ensuring that our patients receive the best possible care.
+                </p>
+              </div>
+              <div>
+                <img 
+                  src="https://images.unsplash.com/photo-1532938314634-03c93e941d81?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" 
+                  alt="Our Story" 
+                  className="rounded-3xl shadow-2xl" 
+                />
+              </div>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="section-padding">
+        <div className="container mx-auto">
+          <AnimatedSection>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+                Meet Our Team
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                Our team comprises experienced healthcare professionals, technology experts, and dedicated support staff, all working together to provide you with the best possible care.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+              {teamMembers.map((member, index) => (
+                <div key={index} className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                  <img src={member.imageUrl} alt={member.name} className="w-full h-64 object-cover object-center" />
+                  <div className="p-6">
+                    <h3 className="text-2xl font-display font-bold text-gray-900 mb-2">{member.name}</h3>
+                    <p className="text-deep-teal font-medium mb-3">{member.title}</p>
+                    <p className="text-gray-600 leading-relaxed">{member.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="section-padding bg-white/80 backdrop-blur-sm">
+        <div className="container mx-auto">
+          <AnimatedSection>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+                Our Core Values
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                These values guide our decisions and actions, ensuring we always put our patients first.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+              {values.map((value, index) => (
+                <div key={index} className="text-center">
+                  <div className="flex justify-center mb-4">
+                    <div className="w-16 h-16 bg-deep-teal/10 rounded-2xl flex items-center justify-center group-hover:bg-deep-teal/20 transition-colors duration-300">
+                      {value.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-display font-bold text-gray-900 mb-2">{value.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                </div>
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="section-padding">
+        <div className="container mx-auto">
+          <AnimatedSection>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+                Our Achievements
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+                We are proud of the impact we've made in the lives of our patients and the healthcare industry.
+              </p>
+            </div>
+            
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center group">
@@ -113,120 +224,31 @@ const AboutUsPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Mission Section */}
-      <section className="section-padding">
-        <div className="container mx-auto">
-          <AnimatedSection>
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <div className="inline-flex items-center px-4 py-2 bg-deep-teal/10 rounded-full text-sm font-medium text-deep-teal mb-6">
-                  <Target className="w-4 h-4 mr-2" />
-                  Our Mission
-                </div>
-                
-                <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6 leading-tight">
-                  Healthcare That
-                  <span className="block bg-gradient-to-r from-deep-teal to-blue-600 bg-clip-text text-transparent">
-                    Works for You
-                  </span>
-                </h2>
-                
-                <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                  We believe healthcare should be proactive, not reactive. Our platform connects you with world-class specialists 
-                  who understand that every patient is unique, every condition is personal, and every treatment should be tailored.
-                </p>
-                
-                <div className="space-y-3 mb-8">
-                  {features.slice(0, 3).map((feature, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <CheckCircle className="h-5 w-5 text-deep-teal flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <Link to="/services">
-                  <Button className="bg-deep-teal hover:bg-deep-teal/90 text-white px-6 py-3 rounded-xl font-semibold">
-                    Explore Our Services
-                  </Button>
-                </Link>
-              </div>
-              
-              <div className="relative">
-                <div className="relative group">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-deep-teal/20 to-blue-600/20 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl"></div>
-                  <div className="relative bg-white p-2 rounded-3xl shadow-2xl">
-                    <img
-                      src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fG1lZGljYWwlMjB0ZWFtfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=80"
-                      alt="Healthcare team collaboration"
-                      className="w-full h-auto object-cover rounded-2xl"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="section-padding bg-white/80 backdrop-blur-sm">
-        <div className="container mx-auto">
-          <AnimatedSection>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
-                Our Core Values
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                These principles guide every decision we make and every interaction we have with our patients and partners.
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, index) => (
-                <Card key={index} className="group hover:shadow-2xl transition-all duration-500 border-0 bg-white/80 backdrop-blur-sm hover:-translate-y-2">
-                  <CardHeader className="text-center pb-4">
-                    <div className="w-16 h-16 bg-deep-teal/10 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-deep-teal/20 transition-colors duration-300">
-                      <value.icon className="w-8 h-8 text-deep-teal" />
-                    </div>
-                    <CardTitle className="text-xl font-display font-semibold text-gray-900">
-                      {value.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-center pt-0">
-                    <p className="text-gray-600 leading-relaxed">{value.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <section className="section-padding bg-gradient-to-r from-deep-teal to-blue-600 text-white">
         <div className="container mx-auto">
           <AnimatedSection>
             <div className="text-center max-w-4xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-display font-bold mb-6">
-                Ready to Transform Your Health Journey?
+                Partner with Healthcare Excellence
               </h2>
               <p className="text-xl opacity-90 mb-8 leading-relaxed">
-                Join thousands of patients who've discovered a better way to manage their health. 
-                Premium care is just one click away.
+                Ready to experience healthcare that puts you first? 
+                Join our community of satisfied patients today.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/patient-intake">
                   <Button size="lg" className="bg-white text-deep-teal hover:bg-gray-50 px-8 py-4 text-lg font-semibold rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                    Book Your Consultation
+                    Book Consultation
                   </Button>
                 </Link>
-                <Link to="/contact">
-                  <Button size="lg" className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300">
-                    Contact Our Team
-                  </Button>
-                </Link>
+                <Button 
+                  size="lg" 
+                  className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300"
+                  onClick={() => handleNavigation('/contact')}
+                >
+                  Contact Our Team
+                </Button>
               </div>
             </div>
           </AnimatedSection>
