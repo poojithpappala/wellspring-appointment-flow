@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from '@/components/ui/button';
@@ -37,8 +36,10 @@ const SpecialistCard: React.FC<SpecialistCardProps> = ({ specialist }) => {
       <CardFooter className="p-6 pt-2"> {/* Adjusted padding */}
         <Button asChild variant="outline" className="w-full border-deep-teal text-deep-teal hover:bg-deep-teal hover:text-white transition-all duration-300 group-hover:shadow-lg">
           <Link to="/patient-intake" aria-label={`Book an appointment with Dr. ${specialist.name}`}>
-            Book with Dr. {specialist.name.split(' ').pop()}
-            <ArrowRight size={18} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            <span className="inline-flex items-center justify-center w-full"> {/* Wrap content in a span and ensure it fills the button */}
+              Book with Dr. {specialist.name.split(' ').pop()}
+              <ArrowRight size={18} className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+            </span>
           </Link>
         </Button>
       </CardFooter>
