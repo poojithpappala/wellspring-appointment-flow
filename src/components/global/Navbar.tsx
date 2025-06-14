@@ -1,13 +1,15 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Stethoscope } from 'lucide-react'; // Using Stethoscope as a logo icon
-import { Button } from '@/components/ui/button'; // Using shadcn button
+import { Menu, X, Stethoscope } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const navLinks = [
   { title: 'Home', path: '/' },
+  { title: 'About Us', path: '/about' },
+  { title: 'Services', path: '/services', comingSoon: true },
   { title: 'Patient Intake', path: '/patient-intake' },
   { title: 'Doctor Portal', path: '/doctor' },
+  { title: 'Contact Us', path: '/contact' },
 ];
 
 const Navbar: React.FC = () => {
@@ -20,7 +22,7 @@ const Navbar: React.FC = () => {
   return (
     <header className="bg-background/80 backdrop-blur-md shadow-soft sticky top-0 z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20"> {/* Increased height to 5rem/80px */}
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 text-deep-teal hover:text-opacity-80 transition-colors">
             <Stethoscope size={32} strokeWidth={2} />
@@ -28,15 +30,17 @@ const Navbar: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
+          <nav className="hidden md:flex space-x-1 lg:space-x-2">
             {navLinks.map((link) => (
               <Link
                 key={link.title}
-                to={link.path}
-                className="text-charcoal hover:text-deep-teal px-3 py-2 rounded-md text-base font-medium transition-colors leading-body"
+                to={link.comingSoon ? '#' : link.path}
+                className={`text-charcoal hover:text-deep-teal px-3 py-2 rounded-md text-sm font-medium transition-colors leading-body ${link.comingSoon ? 'opacity-50 cursor-not-allowed' : ''}`}
                 aria-label={link.title}
+                onClick={link.comingSoon ? (e) => e.preventDefault() : undefined}
               >
                 {link.title}
+                {link.comingSoon && <span className="text-xs ml-1 opacity-70">(Soon)</span>}
               </Link>
             ))}
           </nav>
@@ -64,12 +68,15 @@ const Navbar: React.FC = () => {
             {navLinks.map((link) => (
               <Link
                 key={link.title}
-                to={link.path}
-                onClick={() => setMobileMenuOpen(false)} // Close menu on click
-                className="block text-charcoal hover:text-deep-teal hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium transition-colors leading-body"
+                to={link.comingSoon ? '#' : link.path}
+                onClick={() => {
+                  if (!link.comingSoon) setMobileMenuOpen(false);
+                }}
+                className={`block text-charcoal hover:text-deep-teal hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium transition-colors leading-body ${link.comingSoon ? 'opacity-50 cursor-not-allowed' : ''}`}
                 aria-label={link.title}
               >
                 {link.title}
+                {link.comingSoon && <span className="text-xs ml-1 opacity-70">(Soon)</span>}
               </Link>
             ))}
           </div>
