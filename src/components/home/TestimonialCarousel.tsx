@@ -56,7 +56,7 @@ const TestimonialCarousel: React.FC<TestimonialCarouselProps> = ({ testimonials 
                     ))}
                     <span className="sr-only">{testimonial.stars} out of 5 stars</span>
                   </div>
-                  <p className="text-base text-charcoal leading-body italic">
+                  <p className="text-base text-foreground dark:text-foreground leading-body italic">
                     "{testimonial.quote}"
                   </p>
                   <span className="font-semibold text-deep-teal">— {testimonial.author}</span>
