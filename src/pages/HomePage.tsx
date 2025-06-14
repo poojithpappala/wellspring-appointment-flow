@@ -13,7 +13,7 @@ import AnimatedSection from '@/components/global/AnimatedSection';
 
 const HomePage: React.FC = () => {
   return (
-    <div className="-mt-24 pt-24">
+    <div className="-mt-24 pt-24 overflow-x-hidden">
       <AnimatedSection animationClass="animate-fade-in">
         <HeroSection />
       </AnimatedSection>
