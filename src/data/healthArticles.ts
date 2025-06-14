@@ -1,4 +1,3 @@
-
 export interface HealthArticle {
   id: string;
   title: string;
@@ -266,16 +265,11 @@ Bipolar disorder causes extreme mood swings that include emotional highs (mania 
 - Engage in hobbies you enjoy
 
 **Weekly Self-Care:**
-- Schedule time for relaxation
-- Connect with friends or family
-- Try new activities
-- Spend time in nature
-
-**Monthly Self-Care:**
-- Evaluate your mental health
-- Set new goals
-- Plan enjoyable activities
-- Consider professional check-ins
+- Schedule enjoyable activities
+- Review and adjust goals
+- Connect with support network
+- Practice new coping skills
+- Evaluate mental health status
 
 ## Professional Help and Treatment Options
 
