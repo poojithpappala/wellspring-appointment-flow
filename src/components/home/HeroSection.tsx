@@ -34,7 +34,7 @@ const HeroSection: React.FC = () => {
   const heroImageUrl = "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yJTIwcGF0aWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=1200&q=80";
 
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30 section-padding overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32">
+    <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50/30 section-padding overflow-hidden pt-8 pb-16 md:pt-12 md:pb-20">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-deep-teal/5 rounded-full blur-3xl"></div>
@@ -42,16 +42,16 @@ const HeroSection: React.FC = () => {
       </div>
       
       <div className="container mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column: Content */}
-          <div className="text-center lg:text-left space-y-8">
-            <div className="space-y-6">
-              <div className="inline-flex items-center px-4 py-2 bg-deep-teal/10 rounded-full text-sm font-medium text-deep-teal mb-6">
+          <div className="text-center lg:text-left space-y-6">
+            <div className="space-y-4">
+              <div className="inline-flex items-center px-4 py-2 bg-deep-teal/10 rounded-full text-sm font-medium text-deep-teal mb-4">
                 <span className="w-2 h-2 bg-deep-teal rounded-full mr-2 animate-pulse"></span>
                 Trusted by 10,000+ patients
               </div>
               
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-display text-gray-900 leading-tight font-bold">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display text-gray-900 leading-tight font-bold">
                 Premium Healthcare,
                 <br />
                 <span className="bg-gradient-to-r from-deep-teal to-blue-600 bg-clip-text text-transparent">
@@ -59,7 +59,7 @@ const HeroSection: React.FC = () => {
                 </span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
                 Experience world-class healthcare with our network of elite specialists. 
                 Premium care, seamless booking, exceptional outcomes.
               </p>
