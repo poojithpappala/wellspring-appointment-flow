@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/button';
 const navLinks = [
   { title: 'Home', path: '/' },
   { title: 'About Us', path: '/about' },
-  { title: 'Services', path: '/services', comingSoon: true },
+  { title: 'Services', path: '/services' },
+  { title: 'Health Hub', path: '/health-hub' },
   { title: 'Patient Intake', path: '/patient-intake' },
   { title: 'Doctor Portal', path: '/doctor' },
   { title: 'Contact Us', path: '/contact' },
@@ -34,13 +35,11 @@ const Navbar: React.FC = () => {
             {navLinks.map((link) => (
               <Link
                 key={link.title}
-                to={link.comingSoon ? '#' : link.path}
-                className={`text-charcoal hover:text-deep-teal px-3 py-2 rounded-md text-sm font-medium transition-colors leading-body ${link.comingSoon ? 'opacity-50 cursor-not-allowed' : ''}`}
+                to={link.path}
+                className="text-charcoal hover:text-deep-teal px-3 py-2 rounded-md text-sm font-medium transition-colors leading-body"
                 aria-label={link.title}
-                onClick={link.comingSoon ? (e) => e.preventDefault() : undefined}
               >
                 {link.title}
-                {link.comingSoon && <span className="text-xs ml-1 opacity-70">(Soon)</span>}
               </Link>
             ))}
           </nav>
@@ -68,15 +67,14 @@ const Navbar: React.FC = () => {
             {navLinks.map((link) => (
               <Link
                 key={link.title}
-                to={link.comingSoon ? '#' : link.path}
+                to={link.path}
                 onClick={() => {
-                  if (!link.comingSoon) setMobileMenuOpen(false);
+                  setMobileMenuOpen(false);
                 }}
-                className={`block text-charcoal hover:text-deep-teal hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium transition-colors leading-body ${link.comingSoon ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className="block text-charcoal hover:text-deep-teal hover:bg-gray-50 px-3 py-2 rounded-md text-base font-medium transition-colors leading-body"
                 aria-label={link.title}
               >
                 {link.title}
-                {link.comingSoon && <span className="text-xs ml-1 opacity-70">(Soon)</span>}
               </Link>
             ))}
           </div>

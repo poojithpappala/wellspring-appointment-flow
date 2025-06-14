@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,8 +7,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import PatientIntakePage from "./pages/PatientIntakePage";
 import DoctorPortalPage from "./pages/DoctorPortalPage";
-import AboutUsPage from "./pages/AboutUsPage"; // New import
-import ContactPage from "./pages/ContactPage"; // New import
+import AboutUsPage from "./pages/AboutUsPage";
+import ContactPage from "./pages/ContactPage";
+import ServicesPage from "./pages/ServicesPage";
+import HealthHubPage from "./pages/HealthHubPage";
 import NotFound from "./pages/NotFound";
 import Layout from "./components/global/Layout";
 
@@ -26,8 +27,10 @@ const App = () => (
             <Route path="/" element={<HomePage />} />
             <Route path="/patient-intake" element={<PatientIntakePage />} />
             <Route path="/doctor" element={<DoctorPortalPage />} />
-            <Route path="/about" element={<AboutUsPage />} /> {/* New route */}
-            <Route path="/contact" element={<ContactPage />} /> {/* New route */}
+            <Route path="/about" element={<AboutUsPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/health-hub" element={<HealthHubPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -38,4 +41,3 @@ const App = () => (
 );
 
 export default App;
-
