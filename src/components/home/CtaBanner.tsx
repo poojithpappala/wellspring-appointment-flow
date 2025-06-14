@@ -21,8 +21,10 @@ const CtaBanner: React.FC = () => {
             className="bg-white text-deep-teal hover:bg-gray-100 text-lg px-10 py-6 shadow-soft hover:scale-103 transition-all duration-300 group transform hover:shadow-xl" /* Adjusted padding, hover effect */
             aria-label="Book Your Appointment Now"
           >
-            Book Your Appointment
-            <ChevronRight size={22} className="ml-2.5 transition-transform duration-300 group-hover:translate-x-1" />
+            <span className="inline-flex items-center"> {/* Wrap content in a span */}
+              Book Your Appointment
+              <ChevronRight size={22} className="ml-2.5 transition-transform duration-300 group-hover:translate-x-1" />
+            </span>
           </Button>
         </Link>
       </div>
@@ -31,3 +33,4 @@ const CtaBanner: React.FC = () => {
 };
 
 export default CtaBanner;
+
