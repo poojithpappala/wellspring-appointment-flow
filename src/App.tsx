@@ -11,6 +11,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import ContactPage from "./pages/ContactPage";
 import ServicesPage from "./pages/ServicesPage";
 import HealthHubPage from "./pages/HealthHubPage";
+import ArticlePage from "./pages/ArticlePage"; // Added import
 import NotFound from "./pages/NotFound";
 import Layout from "./components/global/Layout";
 
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/health-hub" element={<HealthHubPage />} />
+            <Route path="/health-hub/:articleId" element={<ArticlePage />} /> {/* Added route */}
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
