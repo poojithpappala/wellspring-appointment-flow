@@ -1552,7 +1552,13 @@ Remember that small, consistent changes often lead to the most significant long-
 export const allHealthArticles = [...healthArticles, ...additionalArticles];
 
 export const getArticleById = (id: string): HealthArticle | undefined => {
-  return allHealthArticles.find(article => article.id === id);
+  console.log('Looking for article with ID:', id);
+  console.log('Available articles:', allHealthArticles.map(a => ({ id: a.id, title: a.title })));
+  
+  const article = allHealthArticles.find(article => article.id === id);
+  console.log('Found article:', article ? article.title : 'Not found');
+  
+  return article;
 };
 
 export const getArticlesByCategory = (category: string): HealthArticle[] => {
