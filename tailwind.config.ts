@@ -57,7 +57,7 @@ export default {
 				'deep-teal': '#007A75',
 			},
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
+				sans: ['Poppins', 'sans-serif'],
 				display: ['Playfair Display', 'serif'],
 			},
 			lineHeight: {
