@@ -1,3 +1,4 @@
+
 export interface HealthArticle {
   id: string;
   title: string;
@@ -25,7 +26,7 @@ export const healthArticles: HealthArticle[] = [
     views: '15,420',
     rating: 4.9,
     excerpt: 'Comprehensive guide covering everything you need to know about maintaining optimal cardiovascular health, from diet and exercise to medical interventions and lifestyle modifications.',
-    imageUrl: 'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60',
+    imageUrl: 'https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     featured: true,
     tags: ['Prevention', 'Diet', 'Exercise', 'Medical Care'],
     content: `Heart disease remains the leading cause of death globally, but the good news is that most heart conditions are preventable through proper lifestyle choices and medical care. This comprehensive guide will walk you through everything you need to know about maintaining optimal cardiovascular health.
@@ -158,7 +159,7 @@ Remember, small changes can make a big difference. Start with one or two modific
     views: '12,890',
     rating: 4.8,
     excerpt: 'Understanding mental health, recognizing signs of common conditions, and learning practical strategies for maintaining emotional wellness and resilience.',
-    imageUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60',
+    imageUrl: 'https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     featured: true,
     tags: ['Mental Health', 'Wellness', 'Therapy', 'Self-Care'],
     content: `Mental health is just as important as physical health, yet it's often overlooked or stigmatized. This comprehensive guide will help you understand mental wellness, recognize common conditions, and develop strategies for maintaining emotional well-being.
@@ -383,7 +384,7 @@ Remember, seeking help for mental health is a sign of strength, not weakness. If
     views: '18,750',
     rating: 4.7,
     excerpt: 'Learn the science-backed fundamentals of nutrition, meal planning strategies, and how to create a sustainable eating pattern that supports long-term health.',
-    imageUrl: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60',
+    imageUrl: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     featured: true,
     tags: ['Diet', 'Meal Planning', 'Weight Management', 'Healthy Eating'],
     content: `Proper nutrition is the foundation of good health, yet navigating the world of dietary advice can be overwhelming. This guide breaks down the essentials of healthy eating into practical, actionable steps that you can implement in your daily life.
@@ -640,7 +641,7 @@ Remember, the best diet is one that you can maintain long-term. Make gradual cha
     views: '22,340',
     rating: 4.9,
     excerpt: 'Comprehensive guide to exercise science, workout planning, injury prevention, and creating a fitness routine that fits your lifestyle and goals.',
-    imageUrl: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60',
+    imageUrl: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     featured: false,
     tags: ['Exercise', 'Fitness', 'Workout Plans', 'Health'],
     content: `Regular physical activity is one of the most important things you can do for your health. This comprehensive guide covers everything from exercise science to practical workout planning, helping you create a sustainable fitness routine.
@@ -1031,7 +1032,7 @@ The key to long-term success is finding activities you enjoy and making them a r
     views: '19,580',
     rating: 4.8,
     excerpt: 'Discover the science of sleep, understand sleep disorders, and learn practical strategies for improving sleep quality and establishing healthy sleep habits.',
-    imageUrl: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60',
+    imageUrl: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
     featured: false,
     tags: ['Sleep', 'Rest', 'Recovery', 'Health'],
     content: `Quality sleep is fundamental to physical health, mental well-being, and overall quality of life. This comprehensive guide explores sleep science and provides practical strategies for optimizing your rest.
@@ -1481,13 +1482,66 @@ Good sleep is the foundation upon which physical health, mental clarity, and emo
   }
 ];
 
-// Add 144 more articles to reach 150+ total
-const additionalArticles: HealthArticle[] = [];
+// Create a mapping of categories to relevant Unsplash image searches
+const categoryImageMap: { [key: string]: string[] } = {
+  'Heart Health': [
+    'https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Heart health
+    'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Cardiology
+    'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Heart monitor
+    'https://images.unsplash.com/photo-1582719471384-894fbb16e074?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' // Heart care
+  ],
+  'Mental Wellness': [
+    'https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Mental wellness
+    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Meditation
+    'https://images.unsplash.com/photo-1552199401-1c4d06b9b834?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Therapy
+    'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' // Mental health support
+  ],
+  'Nutrition': [
+    'https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Healthy food
+    'https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Fresh vegetables
+    'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Healthy meal
+    'https://images.unsplash.com/photo-1543362906-acfc16c67564?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' // Fresh produce
+  ],
+  'Fitness & Exercise': [
+    'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Exercise
+    'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Gym workout
+    'https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Running
+    'https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' // Fitness
+  ],
+  'Sleep Health': [
+    'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Sleep
+    'https://images.unsplash.com/photo-1555212697-194d092e3b8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Bedroom
+    'https://images.unsplash.com/photo-1586336777842-794f32488f5c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Rest
+    'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' // Sleep wellness
+  ],
+  'Preventive Care': [
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Medical checkup
+    'https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Healthcare
+    'https://images.unsplash.com/photo-1612277795421-9bc7706a4a34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Prevention
+    'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' // Medical care
+  ],
+  'Medications': [
+    'https://images.unsplash.com/photo-1585435557343-3b092031d8c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Medications
+    'https://images.unsplash.com/photo-1471864190281-a93a3070b6de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Pills
+    'https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Pharmacy
+    'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' // Medicine
+  ],
+  "Women's Health": [
+    'https://images.unsplash.com/photo-1594824797334-692a32c28e4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Women's health
+    'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Healthcare
+    'https://images.unsplash.com/photo-1551601651-bc60f254d532?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', // Women wellness
+    'https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' // Health and wellness
+  ]
+};
 
 // Generate additional articles to reach 150+ total
+const additionalArticles: HealthArticle[] = [];
+
 for (let i = 6; i <= 156; i++) {
-  const categories = ['Heart Health', 'Mental Wellness', 'Nutrition', 'Fitness & Exercise', 'Preventive Care', 'Medications', 'Women\'s Health', 'Sleep Health'];
+  const categories = ['Heart Health', 'Mental Wellness', 'Nutrition', 'Fitness & Exercise', 'Preventive Care', 'Medications', "Women's Health", 'Sleep Health'];
   const category = categories[i % categories.length];
+  const imageOptions = categoryImageMap[category] || categoryImageMap['Preventive Care'];
+  const imageUrl = imageOptions[i % imageOptions.length];
   
   additionalArticles.push({
     id: i.toString(),
@@ -1499,7 +1553,7 @@ for (let i = 6; i <= 156; i++) {
     views: `${10000 + (i * 100)}`,
     rating: 4.0 + (i % 10) / 10,
     excerpt: `This comprehensive article covers important aspects of ${category.toLowerCase()}, providing evidence-based information and practical advice for better health outcomes.`,
-    imageUrl: `https://images.unsplash.com/photo-157909${String(i).padStart(4, '0')}?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60`,
+    imageUrl,
     featured: i % 20 === 0,
     tags: [category.split(' ')[0], 'Health', 'Wellness', 'Prevention'],
     content: `This is a comprehensive article about ${category.toLowerCase()}. 
