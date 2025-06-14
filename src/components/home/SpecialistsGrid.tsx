@@ -34,11 +34,15 @@ const specialistsData: Specialist[] = [
 
 const SpecialistsGrid: React.FC = () => {
   return (
-    <section className="section-padding bg-background">
+    <section className="section-padding bg-secondary/50">
       <div className="container mx-auto">
-        <h2 className="text-4xl font-display text-center text-charcoal mb-12 leading-tight" aria-label="Our Specialists">
-          Our Specialists
+        <h2 className="text-4xl font-display text-center text-charcoal mb-4 leading-tight" aria-label="Meet Our Esteemed Specialists">
+          Meet Our Esteemed Specialists
         </h2>
+        <p className="text-lg text-muted-foreground text-center mb-16 max-w-2xl mx-auto">
+          Our team of dedicated specialists is here to provide you with expert care across various medical fields.
+          Learn more about their expertise and find the right doctor for your needs.
+        </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {specialistsData.map((specialist) => (
             <SpecialistCard key={specialist.id} specialist={specialist} />
