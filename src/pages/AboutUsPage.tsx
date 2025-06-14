@@ -223,7 +223,7 @@ const AboutUsPage: React.FC = () => {
                   </Button>
                 </Link>
                 <Link to="/contact">
-                  <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300">
+                  <Button size="lg" className="bg-white/20 backdrop-blur-sm text-white border-2 border-white/30 hover:bg-white hover:text-deep-teal px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300">
                     Contact Our Team
                   </Button>
                 </Link>
