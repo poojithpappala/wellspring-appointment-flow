@@ -61,8 +61,8 @@ const HealthHubPage: React.FC = () => {
       {/* Hero Section */}
       <AnimatedSection>
         <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-6xl font-display text-charcoal mb-6 leading-tight">
-            Health <span className="text-deep-teal">Hub</span>
+          <h1 className="text-5xl md:text-6xl font-display text-foreground mb-6 leading-tight">
+            Health <span className="text-deep-teal dark:text-primary">Hub</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
             Your trusted source for evidence-based health information, expert insights, and practical wellness guidance.
@@ -75,7 +75,7 @@ const HealthHubPage: React.FC = () => {
               placeholder="Search health articles, conditions, treatments..."
               value={searchTerm}
               onChange={(e) => handleSearchChange(e.target.value)}
-              className="pl-12 pr-4 py-6 text-lg border-2 border-deep-teal/20 focus:border-deep-teal rounded-full shadow-sm"
+              className="pl-12 pr-4 py-6 text-lg border-2 border-deep-teal/20 dark:border-primary/20 focus:border-deep-teal dark:focus:border-primary rounded-full shadow-sm bg-background dark:bg-card text-foreground"
             />
           </div>
         </div>
@@ -85,10 +85,10 @@ const HealthHubPage: React.FC = () => {
       {!searchTerm && selectedCategory === 'All Topics' && (
         <AnimatedSection>
           <div className="mb-16">
-            <h2 className="text-3xl font-display text-charcoal mb-8">Featured Articles</h2>
+            <h2 className="text-3xl font-display text-foreground mb-8">Featured Articles</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {featuredArticles.slice(0, 3).map((article) => (
-                <Card key={article.id} className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-deep-teal/30">
+                <Card key={article.id} className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-deep-teal/30 dark:hover:border-primary/30 bg-card dark:bg-card">
                   <CardHeader className="p-0">
                     <img 
                       src={article.imageUrl} 
@@ -97,10 +97,10 @@ const HealthHubPage: React.FC = () => {
                     />
                   </CardHeader>
                   <CardContent className="p-6">
-                    <Badge variant="secondary" className="mb-3 bg-deep-teal/10 text-deep-teal">
+                    <Badge variant="secondary" className="mb-3 bg-deep-teal/10 dark:bg-primary/10 text-deep-teal dark:text-primary">
                       {article.category}
                     </Badge>
-                    <h3 className="text-xl font-semibold text-charcoal mb-3 line-clamp-2 group-hover:text-deep-teal transition-colors">
+                    <h3 className="text-xl font-semibold text-foreground mb-3 line-clamp-2 group-hover:text-deep-teal dark:group-hover:text-primary transition-colors">
                       {article.title}
                     </h3>
                     <p className="text-muted-foreground mb-4 line-clamp-3">
@@ -116,7 +116,7 @@ const HealthHubPage: React.FC = () => {
                         {article.date}
                       </span>
                     </div>
-                    <Button asChild variant="outline" className="w-full group-hover:bg-deep-teal group-hover:text-white transition-colors">
+                    <Button asChild variant="outline" className="w-full group-hover:bg-deep-teal dark:group-hover:bg-primary group-hover:text-white dark:group-hover:text-white transition-colors border-deep-teal/20 dark:border-primary/20 text-foreground hover:text-white">
                       <Link to={`/health-hub/${article.id}`}>
                         Read Full Article
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -133,12 +133,12 @@ const HealthHubPage: React.FC = () => {
       {/* Categories and Articles */}
       <AnimatedSection>
         <Tabs value={selectedCategory} onValueChange={handleCategoryChange} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 lg:grid-cols-9 mb-8 bg-muted/50">
+          <TabsList className="grid w-full grid-cols-3 lg:grid-cols-9 mb-8 bg-muted/50 dark:bg-muted/50">
             {categories.map((category) => (
               <TabsTrigger 
                 key={category} 
                 value={category}
-                className="text-xs lg:text-sm data-[state=active]:bg-deep-teal data-[state=active]:text-white"
+                className="text-xs lg:text-sm data-[state=active]:bg-deep-teal dark:data-[state=active]:bg-primary data-[state=active]:text-white dark:data-[state=active]:text-white text-foreground"
               >
                 {category === 'All Topics' ? 'All' : category.replace(' & ', ' ')}
               </TabsTrigger>
@@ -148,7 +148,7 @@ const HealthHubPage: React.FC = () => {
           {categories.map((category) => (
             <TabsContent key={category} value={category} className="mt-0">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-display text-charcoal">
+                <h2 className="text-2xl font-display text-foreground">
                   {category === 'All Topics' 
                     ? `All Health Articles (${filteredArticles.length})`
                     : `${category} Articles (${filteredArticles.length})`
@@ -170,6 +170,7 @@ const HealthHubPage: React.FC = () => {
                       setSearchTerm('');
                       setSelectedCategory('All Topics');
                     }}
+                    className="border-deep-teal/20 dark:border-primary/20 text-foreground hover:bg-deep-teal dark:hover:bg-primary hover:text-white"
                   >
                     View All Articles
                   </Button>
@@ -180,7 +181,7 @@ const HealthHubPage: React.FC = () => {
                     {paginatedArticles.map((article) => {
                       console.log('Rendering article:', article.id, article.title);
                       return (
-                        <Card key={article.id} className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-deep-teal/30">
+                        <Card key={article.id} className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-deep-teal/30 dark:hover:border-primary/30 bg-card dark:bg-card">
                           <CardHeader className="p-0">
                             <img 
                               src={article.imageUrl} 
@@ -189,10 +190,10 @@ const HealthHubPage: React.FC = () => {
                             />
                           </CardHeader>
                           <CardContent className="p-6">
-                            <Badge variant="secondary" className="mb-3 bg-deep-teal/10 text-deep-teal">
+                            <Badge variant="secondary" className="mb-3 bg-deep-teal/10 dark:bg-primary/10 text-deep-teal dark:text-primary">
                               {article.category}
                             </Badge>
-                            <h3 className="text-xl font-semibold text-charcoal mb-3 line-clamp-2 group-hover:text-deep-teal transition-colors">
+                            <h3 className="text-xl font-semibold text-foreground mb-3 line-clamp-2 group-hover:text-deep-teal dark:group-hover:text-primary transition-colors">
                               {article.title}
                             </h3>
                             <p className="text-muted-foreground mb-4 line-clamp-3">
@@ -210,7 +211,7 @@ const HealthHubPage: React.FC = () => {
                                   {article.views}
                                 </span>
                                 <span className="flex items-center">
-                                  <Star className="h-4 w-4 mr-1 fill-current text-yellow-500" />
+                                  <Star className="h-4 w-4 mr-1 fill-current text-yellow-500 dark:text-yellow-400" />
                                   {article.rating}
                                 </span>
                               </div>
@@ -227,7 +228,7 @@ const HealthHubPage: React.FC = () => {
                               </span>
                             </div>
                             
-                            <Button asChild variant="outline" className="w-full group-hover:bg-deep-teal group-hover:text-white transition-colors">
+                            <Button asChild variant="outline" className="w-full group-hover:bg-deep-teal dark:group-hover:bg-primary group-hover:text-white dark:group-hover:text-white transition-colors border-deep-teal/20 dark:border-primary/20 text-foreground hover:text-white">
                               <Link to={`/health-hub/${article.id}`}>
                                 Read Full Article
                                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -246,6 +247,7 @@ const HealthHubPage: React.FC = () => {
                         variant="outline"
                         onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                         disabled={currentPage === 1}
+                        className="border-deep-teal/20 dark:border-primary/20 text-foreground hover:bg-deep-teal dark:hover:bg-primary hover:text-white disabled:opacity-50"
                       >
                         Previous
                       </Button>
@@ -256,6 +258,7 @@ const HealthHubPage: React.FC = () => {
                         variant="outline"
                         onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                         disabled={currentPage === totalPages}
+                        className="border-deep-teal/20 dark:border-primary/20 text-foreground hover:bg-deep-teal dark:hover:bg-primary hover:text-white disabled:opacity-50"
                       >
                         Next
                       </Button>
